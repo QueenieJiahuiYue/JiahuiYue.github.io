@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Queenie — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E9E7E0;
+    --paper-2:#E2DFD6;
+    --ink:#23262F;
+    --ink-soft:#4A4E58;
+    --ink-faint:#8A8D93;
+    --celadon:#4F7C6E;
+    --celadon-bright:#6FA391;
+    --line:#CDCABF;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  a{color:inherit}
+
+  /* eyebrow / labels */
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--celadon);
+  }
+  .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+  }
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(233,231,224,0.82);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:"Fraunces",serif;font-weight:600;font-size:19px;letter-spacing:-0.01em}
+  .brand .cjk{font-family:"Noto Serif SC",serif;color:var(--celadon);margin-left:6px;font-size:16px}
+  .navlinks{display:flex;gap:28px}
+  .navlinks a{
+    font-family:"IBM Plex Mono",monospace;font-size:13px;text-decoration:none;
+    color:var(--ink-soft);letter-spacing:0.02em;transition:color .2s;
+  }
+  .navlinks a:hover{color:var(--celadon)}
+  @media (max-width:640px){.navlinks{display:none}}
+
+  /* hero */
+  header{padding:96px 0 72px;position:relative;overflow:hidden}
+  .hero-langs{display:flex;gap:14px;align-items:center;margin-bottom:26px}
+  .hero-langs span{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-soft)}
+  .hero-langs .cjk{font-family:"Noto Serif SC",serif}
+  .hero-langs .dot{color:var(--celadon)}
+  h1{
+    font-family:"Fraunces",serif;
+    font-weight:500;
+    font-size:clamp(42px,7vw,80px);
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    max-width:14ch;
+    margin-bottom:28px;
+  }
+  h1 em{font-style:italic;color:var(--celadon);font-weight:500}
+  .hero-sub{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-bottom:40px;
+  }
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    font-family:"IBM Plex Mono",monospace;font-size:13.5px;letter-spacing:0.03em;
+    text-decoration:none;padding:13px 22px;border-radius:2px;transition:all .2s;
+  }
+  .btn-solid{background:var(--ink);color:var(--paper)}
+  .btn-solid:hover{background:var(--celadon)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--celadon);color:var(--celadon)}
+
+  /* the bridge mark */
+  .bridge-mark{
+    position:absolute;
+    font-family:"Noto Serif SC",serif;font-weight:700;
+    font-size:clamp(200px,34vw,420px);
+    color:var(--celadon);opacity:0.05;
+    right:-4%;top:-8%;line-height:1;pointer-events:none;user-select:none;
+  }
+
+  /* section frame */
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:44px}
+  .sec-head .num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--celadon)}
+  .sec-head h2{
+    font-family:"Fraunces",serif;font-weight:500;font-size:clamp(26px,3.4vw,36px);
+    letter-spacing:-0.01em;
+  }
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px}}
+  .about-body p{font-size:19px;margin-bottom:20px;max-width:52ch}
+  .about-body p:last-child{margin-bottom:0}
+  .about-side{border-left:1px solid var(--line);padding-left:28px}
+  .fact{margin-bottom:24px}
+  .fact:last-child{margin-bottom:0}
+  .fact .k{display:block;margin-bottom:5px}
+  .fact .v{font-size:16px;color:var(--ink-soft)}
+
+  /* work */
+  .project{
+    display:grid;grid-template-columns:auto 1fr;gap:32px;
+    padding:38px 0;border-top:1px solid var(--line);
+  }
+  .project:first-of-type{border-top:none;padding-top:0}
+  @media (max-width:640px){.project{grid-template-columns:1fr;gap:14px}}
+  .project .idx{font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--celadon);padding-top:6px}
+  .project h3{
+    font-family:"Fraunces",serif;font-weight:500;font-size:24px;
+    letter-spacing:-0.01em;margin-bottom:10px;line-height:1.15;
+  }
+  .project .meta{margin-bottom:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:0.04em;
+    color:var(--celadon);border:1px solid var(--line);padding:4px 9px;border-radius:2px;
+  }
+  .project p{color:var(--ink-soft);max-width:60ch;margin-bottom:10px}
+  .project .method{font-size:15px;color:var(--ink-faint)}
+  .project .method b{color:var(--ink-soft);font-weight:500}
+
+  /* capabilities */
+  .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+  @media (max-width:760px){.caps{grid-template-columns:1fr}}
+  .cap{background:var(--paper);padding:28px 26px}
+  .cap h4{font-family:"Fraunces",serif;font-weight:500;font-size:20px;margin-bottom:12px}
+  .cap ul{list-style:none}
+  .cap li{font-size:15.5px;color:var(--ink-soft);padding:5px 0;border-bottom:1px dotted var(--line)}
+  .cap li:last-child{border-bottom:none}
+  .cap li .cjk{font-family:"Noto Serif SC",serif;color:var(--ink-faint);font-size:13px;margin-left:6px}
+
+  /* contact */
+  .contact{text-align:left}
+  .contact h2{
+    font-family:"Fraunces",serif;font-weight:500;font-size:clamp(30px,5vw,52px);
+    letter-spacing:-0.02em;line-height:1.05;margin-bottom:28px;max-width:16ch;
+  }
+  .contact h2 em{font-style:italic;color:var(--celadon)}
+  .contact-links{display:flex;gap:28px;flex-wrap:wrap;margin-top:8px}
+  .contact-links a{
+    font-family:"IBM Plex Mono",monospace;font-size:14px;text-decoration:none;
+    color:var(--ink);border-bottom:1px solid var(--celadon);padding-bottom:3px;transition:color .2s;
+  }
+  .contact-links a:hover{color:var(--celadon)}
+
+  footer{padding:40px 0;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer .label{color:var(--ink-faint)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  :focus-visible{outline:2px solid var(--celadon);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Queenie<span class="cjk">桥</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Strengths</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="bridge-mark" aria-hidden="true">桥</div>
+  <div class="wrap">
+    <div class="hero-langs reveal">
+      <span class="cjk">中文</span><span class="dot">·</span>
+      <span>Deutsch</span><span class="dot">·</span>
+      <span>English</span>
+    </div>
+    <h1 class="reveal">Research and storytelling <em>across</em> East Asia and Europe.</h1>
+    <p class="hero-sub reveal">Master's researcher in Modern East Asia Studies, based in Germany. I compare how systems and cultures work, then translate what I find into clear writing, sharp presentations, and short-form video.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-solid" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <div class="sec-head">
+          <span class="num">01</span>
+          <h2>About</h2>
+        </div>
+        <p>I'm a Modern East Asia Studies master's student who works comfortably between Chinese and German contexts — academically, professionally, and in daily life. My work tends to sit on a bridge: comparing pension systems across two countries, coordinating a program for people arriving from elsewhere, or filming what it's like to build a life in a new language.</p>
+        <p>I like taking something dense and making it legible. Whichever form it takes — a comparative table, a slide deck, a handout, or a two-minute video — the goal is the same: help someone understand quickly.</p>
+      </div>
+      <aside class="about-side reveal">
+        <div class="fact">
+          <span class="k label">Based in</span>
+          <span class="v">Germany</span>
+        </div>
+        <div class="fact">
+          <span class="k label">Field</span>
+          <span class="v">Modern East Asia Studies (M.A.)</span>
+        </div>
+        <div class="fact">
+          <span class="k label">Languages</span>
+          <span class="v">Chinese (native) · English (fluent) · German (C1, in progress)</span>
+        </div>
+        <div class="fact">
+          <span class="k label">Working across</span>
+          <span class="v">Research · Communications · Content</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">02</span>
+      <h2>Selected work</h2>
+    </div>
+
+    <article class="project reveal">
+      <div class="idx">/01</div>
+      <div>
+        <h3>Legitimacy across systems: China &amp; Germany</h3>
+        <div class="meta">
+          <span class="tag">Comparative research</span>
+          <span class="tag">Political science</span>
+        </div>
+        <p>A comparative analysis of how the Chinese and German pension systems justify themselves to their citizens — where their legitimacy comes from, and how differently each system earns public trust. Produced as reference tables, a presentation, and a structured handout for an academic audience.</p>
+        <p class="method"><b>Frameworks:</b> Beetham's three-dimensional model of legitimacy · Scharpf's input / output legitimacy distinction</p>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="idx">/02</div>
+      <div>
+        <h3>UACP program launch</h3>
+        <div class="meta">
+          <span class="tag">Program &amp; comms</span>
+          <span class="tag">Coordination</span>
+        </div>
+        <p>Helped shape the launch of the UACP program — from the kickoff mailer to the tracking system that kept the team aligned. Wrote and refined the communications that set the tone for a new cohort and coordinated moving parts across a small team.</p>
+        <p class="method"><b>Role:</b> Communications design · project tracking · cross-team coordination</p>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="idx">/03</div>
+      <div>
+        <h3>Building a life in a new language</h3>
+        <div class="meta">
+          <span class="tag">Content &amp; storytelling</span>
+          <span class="tag">Short-form video</span>
+        </div>
+        <p>An ongoing short-form video series documenting my evolving relationship with Germany over time — honest, unfiltered, and built around real moments rather than a polished highlight reel. Shot and edited end to end: concept, filming, and cut.</p>
+        <p class="method"><b>Toolkit:</b> DJI Pocket 3 · CapCut · publish-first, refine-later</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="num">03</span>
+      <h2>What I bring</h2>
+    </div>
+    <div class="caps reveal">
+      <div class="cap">
+        <h4>Research</h4>
+        <ul>
+          <li>Comparative &amp; qualitative analysis</li>
+          <li>Academic writing &amp; synthesis</li>
+          <li>Framework-driven argument</li>
+          <li>Presentations &amp; handouts</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h4>Communication</h4>
+        <ul>
+          <li>Trilingual <span class="cjk">中英德</span></li>
+          <li>Clear, structured writing</li>
+          <li>Program &amp; email comms</li>
+          <li>Making the complex simple</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h4>Content</h4>
+        <ul>
+          <li>Short-form video</li>
+          <li>Filming &amp; editing (CapCut)</li>
+          <li>Concept to publish</li>
+          <li>Audience-first storytelling</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="sec-head">
+      <span class="num">04</span>
+      <h2 style="font-size:inherit;font-family:inherit;font-weight:inherit;letter-spacing:inherit">Contact</h2>
+    </div>
+    <h2>Let's build something <em>across</em> borders.</h2>
+    <p class="hero-sub" style="margin-bottom:24px">Open to roles in research, communications, and content — especially where East Asia and Europe meet. Say hello.</p>
+    <div class="contact-links">
+      <a href="mailto:you@email.com">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="label">© 2026 Queenie</span>
+    <span class="label">Made to be edited — swap in your own details</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay = (i%4)*70 + 'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
