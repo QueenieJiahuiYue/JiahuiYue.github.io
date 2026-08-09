@@ -38,17 +38,18 @@
 
   /* hero */
   header.hero{position:relative;overflow:hidden}
-  .hero-inner{position:relative;min-height:600px;padding:72px 0 84px}
+  .hero-inner{position:relative;min-height:calc(100vh - 68px);padding:44px 0 52px}
   @media (max-width:860px){.hero-inner{min-height:0;padding:56px 0 68px;display:flex;flex-direction:column}}
 
-  .hero-photo{position:absolute;z-index:0;top:0;bottom:0;right:8%;width:58%}
+  .hero-photo{position:absolute;z-index:0;top:0;bottom:0;left:52%;width:42%;transition:left .6s cubic-bezier(.4,0,.2,1)}
+  header.ring-open .hero-photo{left:29%}
   .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;
-    -webkit-mask-image:radial-gradient(92% 96% at 50% 38%,#000 46%,transparent 80%);
-    mask-image:radial-gradient(92% 96% at 50% 38%,#000 46%,transparent 80%)}
-  .hero-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(to right,var(--bg) 3%,rgba(251,249,246,0) 48%),linear-gradient(to top,var(--bg) 1%,transparent 24%)}
+    -webkit-mask-image:radial-gradient(70% 82% at 50% 44%,#000 42%,transparent 76%);
+    mask-image:radial-gradient(70% 82% at 50% 44%,#000 42%,transparent 76%)}
+  .hero-photo::after{content:none}
   @media (max-width:860px){
-    .hero-photo{position:relative;width:100%;order:-1;margin-bottom:6px}
+    .hero-photo{position:relative;width:100%;order:-1;margin-bottom:6px;left:auto!important;transition:none}
+    header.ring-open .hero-photo{left:auto}
     .hero-photo img{height:auto;aspect-ratio:4/5;border-radius:22px;object-position:50% 16%;
       -webkit-mask-image:none;mask-image:none;box-shadow:0 24px 60px rgba(90,70,100,0.18);max-width:340px;margin:0 auto;display:block}
     .hero-photo::after{display:none}
@@ -76,10 +77,11 @@
   .sayhi-wrap:hover .sayhi-note{opacity:1;transform:none}
 
   /* click me */
-  .clickme{position:absolute;z-index:6;left:68%;transform:translateX(-50%);bottom:30px;
+  .clickme{position:absolute;z-index:6;left:72%;transform:translateX(-50%);bottom:26px;
     background:#fff;border:1px solid var(--line);border-radius:999px;padding:15px 30px;
     font-family:var(--fh);font-weight:600;font-size:17px;color:var(--brand);cursor:pointer;
-    box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:11px;transition:transform .2s,box-shadow .2s}
+    box-shadow:var(--shadow);display:inline-flex;align-items:center;gap:11px;transition:transform .2s,box-shadow .2s,left .6s cubic-bezier(.4,0,.2,1)}
+  header.ring-open .clickme{left:50%}
   .clickme:hover{transform:translateX(-50%) translateY(-2px);box-shadow:var(--shadow-lg)}
   .clickme .cm-dot{width:11px;height:11px;border-radius:50%;background:var(--grad);animation:pulse 1.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.35)}}
@@ -96,18 +98,18 @@
   .rlabel .ar{color:var(--brand);font-size:11px;flex:none}
   header.ring-open .rlabel{opacity:1;transform:none}
   header.ring-open .rlabel:hover{transform:scale(1.12);box-shadow:var(--shadow-lg);border-color:var(--brand-2);z-index:6}
-  .p1{left:56%;top:-3%}   header.ring-open .p1{transition-delay:.05s}
-  .p2{right:0;top:8%}     header.ring-open .p2{transition-delay:.10s}
-  .p3{right:0;top:25%}    header.ring-open .p3{transition-delay:.15s}
-  .p4{right:0;top:42%}    header.ring-open .p4{transition-delay:.20s}
-  .p12{right:0;top:60%;font-size:14px;max-width:208px}   header.ring-open .p12{transition-delay:.25s}
-  .p5{right:3%;top:84%}   header.ring-open .p5{transition-delay:.30s}
-  .p6{left:28%;top:72%}   header.ring-open .p6{transition-delay:.35s}
-  .p7{left:34%;top:20%}   header.ring-open .p7{transition-delay:.40s}
-  .p8{left:27%;top:87%}   header.ring-open .p8{transition-delay:.45s}
-  .p9{left:26%;top:38%}   header.ring-open .p9{transition-delay:.50s}
-  .p10{left:28%;top:54%}  header.ring-open .p10{transition-delay:.55s}
-  .p11{left:33%;top:4%}   header.ring-open .p11{transition-delay:.60s}
+  .p1{right:26%;top:3%}   header.ring-open .p1{transition-delay:.06s}
+  .p2{right:6%;top:16%}   header.ring-open .p2{transition-delay:.12s}
+  .p3{right:1%;top:34%}   header.ring-open .p3{transition-delay:.18s}
+  .p4{right:1%;top:54%}   header.ring-open .p4{transition-delay:.24s}
+  .p12{right:6%;top:72%;font-size:14px;max-width:220px}   header.ring-open .p12{transition-delay:.30s}
+  .p5{right:24%;top:86%}  header.ring-open .p5{transition-delay:.36s}
+  .p11{left:26%;top:3%}   header.ring-open .p11{transition-delay:.09s}
+  .p7{left:6%;top:16%}    header.ring-open .p7{transition-delay:.15s}
+  .p8{left:1%;top:34%}    header.ring-open .p8{transition-delay:.21s}
+  .p9{left:1%;top:54%}    header.ring-open .p9{transition-delay:.27s}
+  .p10{left:6%;top:72%}   header.ring-open .p10{transition-delay:.33s}
+  .p6{left:24%;top:86%}   header.ring-open .p6{transition-delay:.39s}
   @media (max-width:860px){
     .ring{position:static;pointer-events:auto;display:none;flex-direction:column;gap:10px;margin-top:4px}
     header.ring-open .ring{display:flex}
@@ -202,18 +204,18 @@
     </div>
 
     <div class="ring">
-      <span class="rlabel p1">🇨🇳 From China <i class="ar">▼</i></span>
+      <span class="rlabel p1"><i class="ar">◀</i> 🇨🇳 From China</span>
       <span class="rlabel p2"><i class="ar">◀</i> 🎓 Here in Germany for my master's</span>
       <span class="rlabel p3"><i class="ar">◀</i> 📚 1st master · English Linguistics</span>
       <span class="rlabel p4"><i class="ar">◀</i> 🌏 2nd master · Modern East Asian Studies (Politics &amp; Business)</span>
       <span class="rlabel p12"><i class="ar">◀</i> 🧠 Academic focus: communication analysis · institutions &amp; innovation</span>
       <span class="rlabel p5"><i class="ar">◀</i> 💼 3 years as working student &amp; intern at SAP — now actively job-hunting</span>
-      <span class="rlabel p6">🎨 Love creative design <i class="ar">▶</i></span>
-      <span class="rlabel p7"><i class="ar">▲</i> ✈️ Love traveling</span>
+      <span class="rlabel p11">📖 Reading: Thus Spoke Zarathustra <i class="ar">▶</i></span>
+      <span class="rlabel p7">✈️ Love traveling <i class="ar">▶</i></span>
       <span class="rlabel p8">🍜 Love food &amp; cooking, with friends <i class="ar">▶</i></span>
       <span class="rlabel p9">🐱 Cats or dogs? Can't decide 🐶 <i class="ar">▶</i></span>
       <span class="rlabel p10">🤖 Lately: designing with AI (like this site!) <i class="ar">▶</i></span>
-      <span class="rlabel p11">📖 Reading: Thus Spoke Zarathustra <i class="ar">▶</i></span>
+      <span class="rlabel p6">🎨 Love creative design <i class="ar">▶</i></span>
     </div>
 
     <button class="clickme" id="clickme" aria-expanded="false">
