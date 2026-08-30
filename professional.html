@@ -516,8 +516,9 @@
 <body>
 
 <nav>
-  <div class="wrap">
+  <div class="wrap" style="position:relative">
     <a class="brand" href="index.html"><span class="mark"></span>Queenie Yue</a>
+    <div id="basicInfoPopup" role="status" style="position:absolute;left:0;top:calc(100% + 8px);z-index:40;background:#2C2A30;color:#fff;font:500 13px/1.4 'DM Sans',system-ui,sans-serif;padding:10px 14px;border-radius:10px;box-shadow:0 10px 24px rgba(40,34,45,.22);white-space:nowrap;opacity:0;transform:translateY(-4px);transition:opacity .3s ease,transform .3s ease;pointer-events:none">Click here for some basic information</div>
     <div class="navlinks">
       <a href="professional.html" class="active">Professional</a>
       <a href="personal.html">Personal</a>
@@ -526,6 +527,22 @@
     </div>
   </div>
 </nav>
+<script>
+(function(){
+  var popup=document.getElementById('basicInfoPopup');
+  if(!popup) return;
+  if(sessionStorage.getItem('basicInfoPopupShown')) return;
+  sessionStorage.setItem('basicInfoPopupShown','1');
+  requestAnimationFrame(function(){
+    popup.style.opacity='1';
+    popup.style.transform='none';
+  });
+  setTimeout(function(){
+    popup.style.opacity='0';
+    popup.style.transform='translateY(-4px)';
+  },3000);
+})();
+</script>
 
 <div class="intro">
   <div class="wrap">
