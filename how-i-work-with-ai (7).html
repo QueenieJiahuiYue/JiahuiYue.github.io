@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>How I Work with AI — Jiahui (Queenie) Yue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF9F6;
+  --paper:#FFFDFC;
+  --ink:#2C2A30;
+  --muted:#6D6872;
+  --line:#E8E0D8;
+  --accent:#7B61B8;
+  --warm:#B074A0;
+  --soft:#F2EEF8;
+  --soft2:#F6EFEF;
+  --ink-soft:#5E5B66;
+  --brand:#7B61B8;--brand-2:#B074A0;--brand-3:#E0A0A8;
+  --grad:linear-gradient(120deg,#7B61B8,#B074A0 55%,#E0A0A8);
+  --max:1120px;--fh:"Poppins",system-ui,sans-serif;--fb:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:var(--fb);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+.page{max-width:var(--max);margin:0 auto;padding:0 32px 72px}
+a{color:inherit}
+
+/* Main site header — exact sizing and spacing from Professional */
+nav.main-nav{position:sticky;top:0;z-index:30;background:rgba(251,249,246,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #EBE4DC}
+nav.main-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.main-nav .brand{font-family:var(--fh);font-weight:700;font-size:19px;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:9px}
+.main-nav .brand .mark{width:24px;height:24px;border-radius:8px;background:var(--grad)}
+.main-nav .navlinks{display:flex;gap:30px;align-items:center}
+.main-nav .navlinks a{font-family:var(--fh);font-weight:500;font-size:14px;text-decoration:none;color:var(--ink-soft);transition:color .2s;text-transform:none;letter-spacing:0}
+.main-nav .navlinks a:hover,.main-nav .navlinks a.active{color:var(--brand)}
+.main-nav .nav-cta{background:var(--ink);color:#fff !important;padding:10px 18px;border-radius:10px;font-size:13px !important}
+.main-nav .nav-cta:hover{background:var(--brand)}
+@media (max-width:760px){.main-nav .navlinks a:not(.nav-cta){display:none}}
+
+/* Page map directly under the site header */
+.page-map{padding:42px 0 22px}
+.page-map .map-kicker{font-family:var(--fb);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+.page-map h1{font-family:var(--fh);font-size:clamp(34px,4.6vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0 0 22px}
+.page-map-intro{font-size:17px;color:var(--ink-soft);max-width:68ch;margin-bottom:24px}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.map-card{display:block;text-decoration:none;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px 22px;transition:transform .2s,box-shadow .2s,border-color .2s;min-height:132px}
+.map-card:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.42);box-shadow:0 12px 32px rgba(123,97,184,.10)}
+.map-num{font-family:var(--fb);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:7px}
+.map-card h2{font-family:var(--fh);font-size:22px;font-weight:600;line-height:1.15;letter-spacing:-.015em;margin:0 0 8px}
+.map-card p{font-size:14px;line-height:1.5;color:var(--muted);margin:0;max-width:52ch}
+.map-arrow{display:inline-block;margin-top:12px;font-family:var(--fh);font-size:13px;font-weight:600;color:var(--brand)}
+@media(max-width:760px){.map-grid{grid-template-columns:1fr}.page-map{padding-top:32px}}
+
+/* Editorial hero */
+.hero{
+  padding:28px 0 22px;
+  border-bottom:3px double var(--ink);
+}
+.hero-top{
+  display:grid;grid-template-columns:minmax(0,1.62fr) minmax(300px,.38fr);gap:56px;align-items:end;
+}
+.kicker{
+  font-size:10px;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--accent);font-weight:800;margin-bottom:8px;
+}
+h1{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  font-size:clamp(40px,4.7vw,58px);
+  line-height:1.02;letter-spacing:-.035em;font-weight:600;
+}
+.deck{
+  margin:18px 0 0;max-width:none;font-size:15px;color:var(--ink);
+}
+.hero-action{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Poppins",sans-serif;font-size:16px;font-weight:600;
+  color:var(--ink);
+}
+.hero-action .down{color:var(--accent);font-size:22px;line-height:1}
+
+.pull{
+  border-left:1px solid var(--ink);padding-left:20px;
+  font-family:"Poppins",sans-serif;
+  font-size:22px;line-height:1.25;color:var(--accent);
+}
+.hero-note{
+  margin-top:18px;padding-top:12px;border-top:1px solid var(--line);
+  display:flex;gap:18px;align-items:baseline;font-size:13px;color:var(--muted);
+}
+.hero-note b{color:var(--ink)}
+
+/* Compact research */
+.research{
+  padding:26px 0 28px;border-bottom:1px solid var(--ink);
+  display:grid;grid-template-columns:.62fr 1.38fr;gap:34px;
+}
+.section-label{
+  font-size:10px;text-transform:uppercase;letter-spacing:.16em;
+  font-weight:800;color:var(--warm);margin-bottom:9px;
+}
+.research h2,.practice h2,.build h2{
+  margin:0;font-family:"Poppins",sans-serif;
+  font-weight:500;letter-spacing:-.035em;
+}
+.research h2{font-size:34px;line-height:1.05}
+.research-meta p{
+  margin:10px 0 0;font-size:14px;color:var(--muted);
+}
+.paper-link{
+  margin-top:14px;display:inline-block;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--ink);font-size:13px;font-weight:700;
+}
+.research-right{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:18px;
+}
+.argument{
+  border-top:1px solid var(--ink);padding-top:12px;
+}
+.argument b{
+  display:block;font-family:"Poppins",sans-serif;font-size:25px;line-height:1.12;margin-bottom:8px;
+}
+.argument p{margin:0;font-size:14px;color:var(--muted)}
+.path{
+  background:var(--paper);border:1px solid var(--line);padding:14px 15px;
+}
+.path-title{
+  font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:10px;
+}
+.row{
+  display:grid;grid-template-columns:1fr 24px 1fr;gap:6px;align-items:center;
+  font-size:12px;
+}
+.box{border:1px solid var(--line);background:white;padding:8px;border-radius:5px;text-align:center}
+.arr{text-align:center;color:#908a80}
+.path-highlight{
+  margin-top:14px;
+  padding:16px 16px 15px;
+  background:var(--soft);
+  border:1px solid #DDD3EA;
+  border-left:4px solid var(--accent);
+  color:var(--ink);
+}
+.path-highlight .ph-label{
+  display:block;font-family:"DM Sans",sans-serif;font-size:10px;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;margin-bottom:6px;
+}
+.path-highlight b{
+  display:block;font-family:"Poppins",sans-serif;font-size:16px;line-height:1.3;margin-bottom:7px;
+}
+.path-highlight .ph-flow{font-size:12.5px;line-height:1.55;color:var(--muted);font-weight:600}
+
+
+/* Practice / skill */
+.practice{
+  padding:38px 0 44px;border-bottom:3px double var(--ink);
+}
+.practice-head{
+  display:grid;grid-template-columns:minmax(360px,.95fr) minmax(0,1.05fr);gap:54px;align-items:start;
+}
+.practice h2{font-size:clamp(40px,4.7vw,58px);line-height:1.02;white-space:nowrap}
+.practice-left-note{
+  margin-top:18px;max-width:520px;font-size:16px;line-height:1.55;color:var(--muted);
+}
+.practice-intro{
+  font-size:15px;max-width:none;color:#36332e;margin:0;
+}
+.practice-intro b{color:var(--accent)}
+.skill-strip{
+  margin-top:28px;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.skill-step{
+  padding:16px 13px;border-right:1px solid var(--line);min-height:102px;
+}
+.skill-step:last-child{border-right:0}
+.skill-step small{display:block;color:var(--muted);margin-bottom:12px}
+.skill-step b{font-family:"Poppins",sans-serif;font-size:18px}
+.skill-step p{font-size:12px;color:var(--muted);margin:5px 0 0}
+
+.work-system{
+  margin-top:30px;
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;
+}
+.skill-card{
+  background:var(--soft);padding:22px;border:1px solid #cbd7d1;
+}
+.skill-card h3{
+  margin:0 0 10px;font-family:"Poppins",sans-serif;font-size:27px;font-weight:500;
+}
+.skill-card p{font-size:14px;color:#46504c;margin:0 0 14px}
+.skill-card .prompt{
+  background:rgba(255,255,255,.65);padding:10px 12px;border-left:3px solid var(--accent);
+  margin:9px 0;font-size:13px;
+}
+.ownership{
+  margin-top:15px;font-size:12px;color:var(--muted)
+}
+.ownership b{color:var(--ink)}
+
+.examples{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+.example{
+  background:var(--paper);border:1px solid var(--line);padding:18px;
+}
+.example .exnum{
+  font-family:"Poppins",sans-serif;font-size:28px;color:#999286;float:right;margin-left:8px;
+}
+.example h4{margin:0 0 7px;font-size:15px}
+.example p{margin:0;font-size:13px;color:var(--muted)}
+.example .shift{
+  margin-top:11px;padding-top:10px;border-top:1px solid var(--line);
+  font-size:12px;color:var(--accent);font-weight:700;
+}
+
+/* Build */
+.build{padding:52px 0 0}
+.build-head{
+  display:grid;grid-template-columns:.7fr 1.3fr;gap:32px;align-items:end;margin-bottom:28px;
+}
+.build h2{font-size:58px;line-height:.95}
+.build-deck{font-size:17px;color:#3b3832;max-width:650px}
+.projects{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
+}
+.project{
+  background:var(--paper);border:1px solid var(--line);padding:22px;
+  min-height:230px;display:flex;flex-direction:column;justify-content:space-between;
+}
+.project.a{grid-column:span 7;background:var(--soft2)}
+.project.b{grid-column:span 5}
+.project.c{grid-column:span 5}
+.project.d{grid-column:span 7}
+.project.e{grid-column:span 7}
+.project.f{grid-column:span 5;background:#ecefe9}
+.tag{
+  font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm)
+}
+.project h3{
+  margin:9px 0 8px;font-family:"Poppins",sans-serif;font-weight:500;
+  font-size:31px;line-height:1.05;letter-spacing:-.025em;
+}
+.project p{margin:0;font-size:14px;color:var(--muted);max-width:560px}
+.project footer{
+  margin-top:20px;padding-top:11px;border-top:1px solid var(--line);
+  font-size:12px;color:#58544d;
+}
+.project .chips{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.project .chips span{
+  padding:5px 8px;border:1px solid var(--line);font-size:11px;background:white
+}
+
+.closing{
+  margin-top:46px;border-top:3px double var(--ink);padding-top:22px;
+  display:grid;grid-template-columns:.6fr 1.4fr;gap:30px;
+}
+.closing h3{
+  margin:0;font-family:"Poppins",sans-serif;font-size:27px;font-weight:500
+}
+.closing p{margin:0;font-size:16px;color:#3b3832}
+footer.site{
+  margin-top:40px;padding:22px 0 0;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-family:"DM Sans",sans-serif
+}
+@media(max-width:900px){
+  .hero-top,.research,.research-right,.practice-head,.work-system,.build-head,.closing{grid-template-columns:1fr}
+  .skill-strip{grid-template-columns:1fr 1fr}
+  .skill-step{border-bottom:1px solid var(--line)}
+  .projects .project{grid-column:span 12}
+}
+@media(max-width:600px){
+  .page{padding-left:18px;padding-right:18px}
+  .pull{border-left:0;border-top:1px solid var(--line);padding:14px 0 0}
+  .hero-note{display:block}
+  .skill-strip,.examples{grid-template-columns:1fr}
+  .navlinks{display:none}
+}
+
+
+/* Content clarity helpers — keep existing editorial structure */
+.map-subnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.map-subnav span{display:inline-block;padding:6px 9px;border:1px solid var(--line);border-radius:999px;font-family:"DM Sans",sans-serif;font-size:11px;color:var(--accent);background:var(--paper)}
+.findings-title{font-family:"Poppins",sans-serif;font-size:27px;line-height:1.08;font-weight:600;margin:0 0 14px}
+.finding{padding:12px 0;border-top:1px solid var(--line)}
+.finding:first-of-type{border-top:1px solid var(--ink)}
+.finding b{display:block;font-family:"Poppins",sans-serif;font-size:17px;line-height:1.25;margin-bottom:5px;color:var(--ink)}
+.finding p{margin:0;font-family:"DM Sans",sans-serif;font-size:13.5px;line-height:1.55;color:var(--muted)}
+
+
+/* Major AI sections: one shared title language */
+.hero h1, .practice h2, .build h2{
+  font-family:"Poppins",sans-serif;
+  font-size:42px;
+  line-height:1.06;
+  letter-spacing:-.032em;
+  font-weight:600;
+}
+.hero h1{white-space:nowrap}
+.practice h2{white-space:nowrap}
+.hero-top{align-items:center;grid-template-columns:minmax(0,1.7fr) minmax(310px,.55fr)}
+.practice-head{grid-template-columns:minmax(360px,.82fr) minmax(0,1.18fr);align-items:start}
+.core-question{
+  border-left:2px solid var(--accent);
+  padding:12px 0 12px 26px;
+  color:var(--ink);
+  margin-left:8px;
+}
+.core-question small{
+  display:block;
+  font-family:"DM Sans",sans-serif;
+  font-size:10px;
+  line-height:1.2;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:7px;
+}
+.core-question strong{
+  display:block;
+  font-family:"Poppins",sans-serif;
+  font-size:20px;
+  line-height:1.3;
+  font-weight:500;
+}
+.research-takeaway{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+}
+.research-takeaway .takeaway-label{
+  font-family:"DM Sans",sans-serif;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--warm);
+  font-weight:700;
+  margin-bottom:7px;
+}
+.research-takeaway p{
+  margin:0;
+  font-family:"DM Sans",sans-serif;
+  font-size:14px;
+  line-height:1.55;
+  color:var(--ink);
+}
+.practice-intro .practice-lead{
+  display:block;
+  font-family:"Poppins",sans-serif;
+  font-size:18px;
+  line-height:1.45;
+  font-weight:500;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+.practice-intro .practice-emphasis{
+  display:block;
+  margin-top:10px;
+  color:var(--accent);
+  font-weight:600;
+}
+.practice-intro .practice-caveat{
+  display:block;
+  margin-top:10px;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--muted);
+}
+.practice-points{display:grid;gap:12px}
+.practice-point{padding:13px 0;border-top:1px solid var(--line)}
+.practice-point:first-child{border-top:0;padding-top:0}
+.practice-point b{display:block;font-family:"Poppins",sans-serif;font-size:15px;margin-bottom:4px;color:var(--ink)}
+.practice-point span{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.practice-point.emphasis b{color:var(--accent)}
+@media(max-width:1100px){
+  .hero h1,.practice h2,.build h2{font-size:38px}
+  .hero h1,.practice h2{white-space:normal}
+}
+@media(max-width:900px){
+  .hero h1,.practice h2,.build h2{font-size:36px}
+  .hero-top,.practice-head{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark"></span>Queenie Yue</a>
+    <div class="navlinks">
+      <a href="professional.html" class="active">Professional</a>
+      <a href="personal.html">Personal</a>
+      <a href="creative.html">Creative</a>
+      <a class="nav-cta" href="index.html#contact">Let's talk</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+<section class="page-map" aria-label="How I Work with AI page overview">
+  <div class="map-kicker">AI, work, and learning</div>
+  <h1>What should juniors learn when AI can already do the first draft?</h1>
+  <p class="page-map-intro">I entered the workplace just as generative AI began taking over many of the tasks juniors traditionally learned through. That made the question personal: how do I use AI without outsourcing the learning that helps judgment develop?</p>
+  <div class="map-grid">
+    <a class="map-card" href="#viewpoint">
+      <div class="map-num">01 · AI viewpoint</div>
+      <h2>How I think about AI</h2>
+      <p>The research behind my view: the Junior Paradox, AI-mediated apprenticeship, and progressive ownership.</p>
+      <span class="map-arrow">Go to viewpoint ↓</span>
+    </a>
+    <a class="map-card" href="#work-ai">
+      <div class="map-num">02 · AI practice</div>
+      <h2>How I use AI in practice</h2>
+      <p>Two applications of the same idea: learning better at work, and building tools for everyday life.</p>
+      <div class="map-subnav"><span onclick="event.preventDefault();location.hash='work-ai'">At work ↓</span><span onclick="event.preventDefault();location.hash='life-ai'">In everyday life ↓</span></div>
+    </a>
+  </div>
+</section>
+
+<header class="hero" id="viewpoint">
+  <div class="hero-top">
+    <div>
+      <div class="kicker">Why I started asking</div>
+      <h1>AI changed the work juniors start with.</h1>
+      <p class="deck"><span class="hero-action">What should I do? <span>I did a study.</span><span class="down">↓</span></span></p>
+    </div>
+    <div class="core-question">
+      <small>The junior paradox</small>
+      <strong>AI can make juniors productive faster — while removing some of the work that used to teach them how to become good.</strong>
+    </div>
+  </div>
+</header>
+
+<section class="research" id="research">
+  <div class="research-meta">
+    <div class="section-label">01 / AI viewpoint · Research</div>
+    <h2>Is AI Different This Time?</h2>
+    <p>
+      <b>A Mixed-Methods Study of AI Adoption in China</b><br/>
+      My research asked how AI is changing early-career work — and what that means for how juniors learn, develop judgment, and grow into larger responsibility.
+    </p>
+    <a class="paper-link" href="#" onclick="alert('Replace this with your Overleaf URL.');return false;">Read the paper on Overleaf ↗</a>
+    <div class="research-takeaway">
+      <div class="takeaway-label">What I took from the research</div>
+      <p>The safest direction is not a permanently “safe” occupation, but work that keeps me close to real-world feedback, progressive responsibility, and opportunities to redesign how humans and AI work together.</p>
+    </div>
+  </div>
+
+  <div class="research-right">
+    <div class="argument">
+      <div class="findings-title">What I found</div>
+
+      <div class="finding">
+        <b>1. AI changes tasks before whole jobs.</b>
+        <p>Entry-level cognitive tasks shift first. Human value therefore moves away from execution alone and toward verification, problem framing, contextual judgment, task decomposition, coordination, ownership, and deciding how AI should fit into the wider workflow.</p>
+      </div>
+
+      <div class="finding">
+        <b>2. The Junior Paradox</b>
+        <p>AI can make juniors productive faster, while weakening some of the repeated real-world exposure through which tacit knowledge, pattern recognition, and professional judgment used to develop.</p>
+      </div>
+
+      <div class="finding">
+        <b>3. The answer is AI-mediated apprenticeship + progressive ownership.</b>
+        <p>What needs to be preserved is not inefficient work itself, but the learning process it used to create: verification, explicit reasoning, senior feedback, lower-risk decisions, and responsibility for progressively larger outcomes.</p>
+      </div>
+
+    </div>
+
+    <div class="path">
+      <div class="path-title">AI-mediated apprenticeship · two learning paths</div>
+      <div class="row">
+        <div class="box"><b>Junior execution</b></div><div class="arr">→</div><div class="box"><b>AI first pass</b></div>
+        <div class="box">Repeated real cases</div><div class="arr">→</div><div class="box">Junior verification</div>
+        <div class="box">Exposure</div><div class="arr">→</div><div class="box">Articulate reasoning</div>
+        <div class="box">Pattern recognition</div><div class="arr">→</div><div class="box">Senior feedback</div>
+        <div class="box">Tacit knowledge</div><div class="arr">→</div><div class="box">Bounded decisions</div>
+        <div class="box">Professional judgment</div><div class="arr">→</div><div class="box">Progressive ownership</div>
+        <div class="box"><b>Senior expertise</b></div><div class="arr">→</div><div class="box"><b>Workflow redesign</b></div>
+      </div>
+      <div class="path-highlight">
+        <span class="ph-label">What this means for junior growth</span>
+        <b>Progressive Ownership</b>
+        <div class="ph-flow">Execution → Verification → Bounded Decision-Making → Ownership → Workflow / System Redesign</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practice" id="work-ai">
+  <div class="practice-head">
+    <div>
+      <div class="section-label">02.1 / AI practice · At work</div>
+      <h2>How I use AI at work.</h2>
+      <p class="practice-left-note"><b>I decided to test the research on myself.</b> Instead of using AI only to finish tasks faster, I use it to make the surrounding work easier to understand.</p>
+    </div>
+    <div class="practice-points">
+      <div class="practice-point">
+        <b>AI does the first pass.</b>
+        <span>I use the review to reconstruct the workstream, decision logic, dependencies, and what could come next.</span>
+      </div>
+      <div class="practice-point emphasis">
+        <b>The paper became a learning loop.</b>
+        <span>I now use that loop on real projects to move from completing a task toward understanding — and eventually owning — a larger piece of the work.</span>
+      </div>
+      <div class="practice-point">
+        <b>AI still cannot replace the apprenticeship around the work.</b>
+        <span>I still need feedback, mentoring, lower-risk decisions, and real opportunities to take responsibility.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-strip">
+    <div class="skill-step">
+      <small>01</small><b>Observe</b>
+      <p>What happened beyond my assigned task?</p>
+    </div>
+    <div class="skill-step">
+      <small>02</small><b>Reconstruct</b>
+      <p>What workstream, outcome, and decision were people actually working on?</p>
+    </div>
+    <div class="skill-step">
+      <small>03</small><b>Compare</b>
+      <p>What did a more senior colleague notice that I missed?</p>
+    </div>
+    <div class="skill-step">
+      <small>04</small><b>Predict</b>
+      <p>What decision, dependency, blocker, or consequence is likely to come next?</p>
+    </div>
+    <div class="skill-step">
+      <small>05</small><b>Own</b>
+      <p>What defined piece could I take responsibility for next?</p>
+    </div>
+  </div>
+
+  <div class="work-system">
+    <div class="skill-card">
+      <div class="section-label">AI-mediated Apprenticeship · in practice</div>
+      <h3>AI as a learning coach, not just a summarizer.</h3>
+      <p>
+        I built the learning loop that my research suggested was becoming necessary: use AI for the first pass, then make the reasoning, decisions, feedback, and ownership visible enough to learn from.
+      </p>
+
+      <div class="prompt">“What is the real workstream, and what outcome is it trying to produce?”</div>
+      <div class="prompt">“What decision is being made, who has the decision right, and what information or trade-offs shaped it?”</div>
+      <div class="prompt">“What dependency or blocker is emerging — and what happened after the decision?”</div>
+      <div class="prompt">“What did a senior colleague notice that I missed, what can I prepare before being asked, and what defined piece could I own next?”</div>
+
+      <div class="ownership">
+        <b>Progressive Ownership:</b><br/>
+        Execution → Verification → Bounded Decision-Making → Ownership → Workflow / System Redesign<br/><br/>
+        Moving from someone who completes assigned tasks toward someone who understands and takes responsibility for a larger outcome.
+      </div>
+    </div>
+
+    <div class="examples">
+      <div class="example">
+        <span class="exnum">01</span>
+        <h4>From meeting notes → decision learning</h4>
+        <p>
+          I reconstruct the trigger, options, trade-offs, decision right, evidence used, and what happened after the decision — not only the summary and action list.
+        </p>
+        <div class="shift">Output → understanding how the organization decides.</div>
+      </div>
+
+      <div class="example">
+        <span class="exnum">02</span>
+        <h4>From “update this” → map the workstream</h4>
+        <p>
+          I ask what outcome the task serves, what it depends on, who owns the surrounding process, and which blocker or requirement is actually shaping progress.
+        </p>
+        <div class="shift">Task → context → dependency → workstream.</div>
+      </div>
+
+      <div class="example">
+        <span class="exnum">03</span>
+        <h4>From follow-up → proactive preparation</h4>
+        <p>
+          I use the wider context to anticipate the next information need, trade-off, dependency, or stakeholder question — and prepare before being asked.
+        </p>
+        <div class="shift">Reaction → prediction → lower-risk judgment.</div>
+      </div>
+
+      <div class="example">
+        <span class="exnum">04</span>
+        <h4>From helping → progressive ownership</h4>
+        <p>
+          I look for a bounded piece where I can take responsibility for the outcome, while being explicit about the feedback, authority, and decision support I still need.
+        </p>
+        <div class="shift">“Can I help?” → “Can I own this defined piece?”</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="build" id="life-ai">
+  <div class="build-head">
+    <div>
+      <div class="section-label">02.2 / AI practice · Everyday life</div>
+      <h2>How I use AI<br/>in everyday life.</h2>
+    </div>
+    <div class="build-deck">
+      Outside work, I use AI as a practical building partner. It lets me turn small frustrations, personal routines, and recurring needs into tools that fit the way I actually live — instead of waiting for the perfect product to exist.
+    </div>
+  </div>
+
+  <div class="projects">
+    <article class="project a">
+      <div>
+        <div class="tag">In use</div>
+        <h3>Personal Planning System</h3>
+        <p>
+          A workspace for schedule checking, daily planning, journals, routines, and reflection —
+          built around how I actually organize my life rather than around a generic productivity template.
+        </p>
+        <div class="chips">
+          <span>Schedule</span><span>Daily Plan</span><span>Journal</span><span>Routine</span><span>Reflection</span>
+        </div>
+      </div>
+      <footer>Built to reduce the mental overhead of managing everyday life.</footer>
+    </article>
+
+    <article class="project b">
+      <div>
+        <div class="tag">In use · 2 users</div>
+        <h3>Shared Home Finance</h3>
+        <p>
+          A tool my roommate and I use to record shared expenses and automatically offset what we owe each other,
+          so we do not need to keep transferring small amounts back and forth.
+        </p>
+      </div>
+      <footer>Current satisfaction: 2 / 2 users.</footer>
+    </article>
+
+    <article class="project c">
+      <div>
+        <div class="tag">Live</div>
+        <h3>This Website</h3>
+        <p>
+          My personal website is itself an AI-assisted build — a place where research, work, ideas,
+          and experiments can keep evolving.
+        </p>
+      </div>
+      <footer>The website is part portfolio, part laboratory.</footer>
+    </article>
+
+    <article class="project d">
+      <div>
+        <div class="tag">In progress</div>
+        <h3>Emotional Reflection</h3>
+        <p>
+          A tool for recording emotional experiences and identifying patterns over time:
+          recurring triggers, responses, and what changes them.
+        </p>
+      </div>
+      <footer>Exploring AI for self-understanding, not only productivity.</footer>
+    </article>
+
+    <article class="project e">
+      <div>
+        <div class="tag">In progress</div>
+        <h3>Main Quest</h3>
+        <p>
+          A game-like life system that helps people remember their main quest when daily side quests —
+          email, admin, errands, meetings, and small urgent tasks — start taking over.
+        </p>
+      </div>
+      <footer>The goal is not to gamify productivity. It is to protect direction.</footer>
+    </article>
+
+    <article class="project f">
+      <div>
+        <div class="tag">My approach</div>
+        <h3>Small friction → working prototype.</h3>
+        <p>
+          I build when a workflow feels unnecessarily heavy, when an idea keeps coming back,
+          or when I want a tool that does not quite exist in the form I need.
+        </p>
+      </div>
+      <footer>AI makes experimentation cheap enough to be part of everyday life.</footer>
+    </article>
+  </div>
+</section>
+
+<section class="closing">
+  <h3>What changed for me</h3>
+  <p>
+    AI changed both sides of my work: how I learn inside organizations, and what I feel capable of creating outside them.
+    I still use it to save time — but I care much more about what I do with the time, attention, and capability it gives back.
+  </p>
+</section>
+
+<footer class="site">
+  <span>How I Work with AI</span>
+  <span>Prototype v4</span>
+</footer>
+
+</div>
+</body>
+</html>
