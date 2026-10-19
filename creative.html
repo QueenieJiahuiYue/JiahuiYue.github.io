@@ -57,18 +57,24 @@ details.acc[open] .acc-chevron{transform:rotate(90deg)}
 .pcard{grid-column:span 6;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
 .pcard:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.4);box-shadow:0 14px 34px rgba(123,97,184,.12)}
 .pcard.wide{grid-column:span 12}
-.pshot{aspect-ratio:16/9;background:linear-gradient(135deg,var(--soft),var(--soft2));position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
-.pshot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.pshot-split{display:flex;gap:1px;background:var(--line)}
-.pshot-split img{width:50%;height:100%;object-fit:contain;background:#fff}
-.pcard.wide .pshot{aspect-ratio:16/7}
+.pshot{background:linear-gradient(135deg,var(--soft),var(--soft2));position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden;padding:16px}
+.pshot img{width:100%;max-height:360px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in;transition:transform .2s;background:#fff;box-shadow:0 2px 10px rgba(44,42,48,.06)}
+.pshot img:hover{transform:scale(1.015)}
+.pshot-split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pshot-split img{width:100%;max-height:300px}
 .pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8}
 .pshot .ph-empty svg{opacity:.55}
 .pshot .ph-empty small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
 .pbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
 .ptag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm);font-weight:700}
-.pcard h3{margin:9px 0 8px;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
+.pcard h3{margin:9px 0 12px;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
 .pcard p{margin:0;font-size:14px;color:var(--muted);flex:1;line-height:1.6}
+.pstory{display:flex;flex-direction:column;gap:12px}
+.pstory-row{padding-left:14px;border-left:2px solid var(--line)}
+.pstory-row.fix{border-left-color:var(--accent)}
+.pstory-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--muted);margin-bottom:3px}
+.pstory-row.fix .pstory-label{color:var(--accent)}
+.pstory-row p{font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
 .pchips{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
 .pchips span{padding:5px 9px;border:1px solid var(--line);font-size:11px;background:#fff;border-radius:6px;color:var(--ink-soft)}
 .plinks{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
@@ -83,6 +89,12 @@ details.acc[open] .acc-chevron{transform:rotate(90deg)}
 .ai-made-footnote a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
 
 footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(26,22,30,.82);display:none;align-items:center;justify-content:center;padding:28px;z-index:100;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(900px,92vw);max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.lightbox-close{position:fixed;top:22px;right:26px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:20px;cursor:pointer;z-index:101}
 
 @media(max-width:900px){
   .pcard{grid-column:span 12}
@@ -139,7 +151,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody">
             <div class="ptag">In use · 2 users</div>
             <h3>Shared Home Finance</h3>
-            <p>My roommate and I split our household costs, but neither of us wanted to download a whole app just for two people. We used to jot everything in Notes and sit down once a month to do the math — and we'd always forget something. So I built a tiny tool instead: whenever one of us pays for something, we log it and the balance updates right away. Open it and you instantly know who owes whom — whoever owes more just buys the next round of groceries. No more monthly math nights, and our spending stays transparent.</p>
+            <div class="pstory">
+              <div class="pstory-row fix">
+                <span class="pstory-label">The problem</span>
+                <p>My roommate and I kept household costs in Notes and did the math once a month — we always forgot something, and neither of us wanted a whole app just for two people.</p>
+              </div>
+              <div class="pstory-row">
+                <span class="pstory-label">How it feels now</span>
+                <p>Whoever pays logs it, the balance updates instantly, and whoever owes more just buys the next round of groceries. No more monthly math nights.</p>
+              </div>
+            </div>
             <div class="pchips"><span>Expense tracking</span><span>Automation</span></div>
             <div class="plinks">
               <span class="soon">Live demo — coming soon</span>
@@ -156,7 +177,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Personal Planning System</h3>
-            <p>Every planning app I tried felt almost right but never quite fit how I actually think. So I built my own, with monthly planning as the anchor: each month gets its own goals and active projects, plus a priority matrix that scores what's important and what's urgent, so I can see at a glance what really needs me today. Mornings start with a short journal entry, and the system carries that into regular monthly and yearly reflections — it's slowly become the place where my thinking about my own life actually lives.</p>
+            <div class="pstory">
+              <div class="pstory-row fix">
+                <span class="pstory-label">The problem</span>
+                <p>Every planning app I tried felt almost right, but never quite matched how I actually think about my own life.</p>
+              </div>
+              <div class="pstory-row">
+                <span class="pstory-label">How it feels now</span>
+                <p>Monthly goals as the anchor, a priority matrix for what's urgent vs. important, a morning journal, and regular reflections — it's become the place where my thinking about my life actually lives.</p>
+              </div>
+            </div>
             <div class="pchips"><span>Monthly planning</span><span>Priority matrix</span><span>Journal</span></div>
             <div class="plinks">
               <span class="soon">Live demo — coming soon</span>
@@ -172,7 +202,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>German Learning Companion</h3>
-            <p>I'm working toward my C1 German exam, and most reading-practice tools either quiz you or just hand you a translation. I wanted something in between: an article I can actually read, where I can tap any phrase for an explanation, double-click a sentence to hear it, and then drill it through back-translation and sentence-pattern exercises. It also remembers where I stopped and lets me log what I still didn't click, so each article turns into a small, honest log of what I actually need to practice next.</p>
+            <div class="pstory">
+              <div class="pstory-row fix">
+                <span class="pstory-label">The problem</span>
+                <p>Most German reading-practice tools either quiz you or just hand you a translation — neither one actually teaches me to read.</p>
+              </div>
+              <div class="pstory-row">
+                <span class="pstory-label">How it feels now</span>
+                <p>I tap any phrase for an explanation, double-click to hear it, then drill it with back-translation. It remembers where I stopped and logs what I still need to practice.</p>
+              </div>
+            </div>
             <div class="pchips"><span>German C1</span><span>Interactive reading</span><span>Spaced practice</span></div>
             <div class="plinks">
               <span class="soon">Live demo — coming soon</span>
@@ -183,15 +222,17 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
 
         <article class="pcard">
           <div class="pshot">
-            <div class="ph-empty">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <small>Add a screenshot here</small>
-            </div>
+            <img src="assets/creative/this-website.png" alt="Screenshot of the Professional page of this website" loading="lazy">
           </div>
           <div class="pbody">
             <div class="ptag">Live</div>
             <h3>This Website</h3>
-            <p>My personal website is itself an AI-assisted build — a place where research, work, ideas, and experiments can keep evolving. You're looking at it right now.</p>
+            <div class="pstory">
+              <div class="pstory-row">
+                <span class="pstory-label">What it is</span>
+                <p>My personal site is itself an AI-assisted build — a place where research, work, ideas, and experiments can keep evolving. You're looking at it right now.</p>
+              </div>
+            </div>
             <div class="pchips"><span>Portfolio</span><span>HTML/CSS</span></div>
             <div class="plinks">
               <a class="demo" href="index.html">View live ↗</a>
@@ -207,7 +248,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Emotional Reflection</h3>
-            <p>This one builds on the morning journal entries from my Personal Planning System. Each morning, it reads what I wrote about how I'm feeling and what I want from the day, and reflects it back to me with a bit of encouragement and clarity — a small nudge that helps me decide how to actually spend the day ahead.</p>
+            <div class="pstory">
+              <div class="pstory-row fix">
+                <span class="pstory-label">The problem</span>
+                <p>My morning journal entries were full of feelings I never actually looked back at or learned from.</p>
+              </div>
+              <div class="pstory-row">
+                <span class="pstory-label">How it feels now</span>
+                <p>Each morning it reads what I wrote and reflects it back with a bit of encouragement and clarity — a small nudge that helps me decide how to spend the day.</p>
+              </div>
+            </div>
             <div class="pchips"><span>Self-understanding</span><span>Daily reflection</span></div>
             <div class="plinks">
               <span class="soon">Private build — not yet shared</span>
@@ -225,7 +275,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody">
             <div class="ptag">In progress</div>
             <h3>Main Quest</h3>
-            <p>A game-like life system that helps people remember their main quest when daily side quests — email, admin, errands, meetings — start taking over.</p>
+            <div class="pstory">
+              <div class="pstory-row fix">
+                <span class="pstory-label">The problem</span>
+                <p>Daily side quests — email, admin, errands, meetings — keep crowding out what I actually meant to be doing.</p>
+              </div>
+              <div class="pstory-row">
+                <span class="pstory-label">What I'm building</span>
+                <p>A game-like life system that helps me remember my main quest when the small stuff takes over.</p>
+              </div>
+            </div>
             <div class="pchips"><span>Life system</span><span>Game mechanics</span></div>
             <div class="plinks">
               <span class="soon">Live demo — coming soon</span>
@@ -289,6 +348,29 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
   <span>© 2026 Jiahui (Queenie) Yue</span>
   <span>Heidelberg, Germany · open to relocate</span>
 </footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.pshot img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+    });
+  });
+  function close(){ lb.classList.remove('open'); lbImg.src=''; }
+  lb.addEventListener('click', close);
+  document.getElementById('lightboxClose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 
 </body>
 </html>
