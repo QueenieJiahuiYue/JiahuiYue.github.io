@@ -58,7 +58,10 @@ details.acc[open] .acc-chevron{transform:rotate(90deg)}
 .pcard:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.4);box-shadow:0 14px 34px rgba(123,97,184,.12)}
 .pcard.wide{grid-column:span 12}
 .pshot{aspect-ratio:16/9;background:linear-gradient(135deg,var(--soft),var(--soft2));position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
-.pshot img{width:100%;height:100%;object-fit:cover;display:block}
+.pshot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.pshot-split{display:flex;gap:1px;background:var(--line)}
+.pshot-split img{width:50%;height:100%;object-fit:contain;background:#fff}
+.pcard.wide .pshot{aspect-ratio:16/7}
 .pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8}
 .pshot .ph-empty svg{opacity:.55}
 .pshot .ph-empty small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
@@ -131,10 +134,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
 
         <article class="pcard">
           <div class="pshot">
-            <div class="ph-empty">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <small>Add a screenshot here</small>
-            </div>
+            <img src="assets/creative/shared-finance.png" alt="TwoGather app screen showing who owes whom and a form to add a shared expense" loading="lazy">
           </div>
           <div class="pbody">
             <div class="ptag">In use · 2 users</div>
@@ -148,18 +148,32 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           </div>
         </article>
 
-        <article class="pcard">
-          <div class="pshot">
-            <div class="ph-empty">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <small>Add a screenshot here</small>
-            </div>
+        <article class="pcard wide">
+          <div class="pshot pshot-split">
+            <img src="assets/creative/planning-today.png" alt="Project OS Today view with morning journal, sleep check-in and to-do list" loading="lazy">
+            <img src="assets/creative/planning-priority.png" alt="Project OS zoomed priority map showing important and urgent tasks" loading="lazy">
           </div>
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Personal Planning System</h3>
             <p>Every planning app I tried felt almost right but never quite fit how I actually think. So I built my own, with monthly planning as the anchor: each month gets its own goals and active projects, plus a priority matrix that scores what's important and what's urgent, so I can see at a glance what really needs me today. Mornings start with a short journal entry, and the system carries that into regular monthly and yearly reflections — it's slowly become the place where my thinking about my own life actually lives.</p>
             <div class="pchips"><span>Monthly planning</span><span>Priority matrix</span><span>Journal</span></div>
+            <div class="plinks">
+              <span class="soon">Live demo — coming soon</span>
+              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pcard">
+          <div class="pshot">
+            <img src="assets/creative/german-learning.webp" alt="German C1 reading article with clickable phrase highlights, listen-aloud controls and a progress and reflection panel" loading="lazy">
+          </div>
+          <div class="pbody">
+            <div class="ptag">In use</div>
+            <h3>German Learning Companion</h3>
+            <p>I'm working toward my C1 German exam, and most reading-practice tools either quiz you or just hand you a translation. I wanted something in between: an article I can actually read, where I can tap any phrase for an explanation, double-click a sentence to hear it, and then drill it through back-translation and sentence-pattern exercises. It also remembers where I stopped and lets me log what I still didn't click, so each article turns into a small, honest log of what I actually need to practice next.</p>
+            <div class="pchips"><span>German C1</span><span>Interactive reading</span><span>Spaced practice</span></div>
             <div class="plinks">
               <span class="soon">Live demo — coming soon</span>
               <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
@@ -188,10 +202,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
 
         <article class="pcard">
           <div class="pshot">
-            <div class="ph-empty">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <small>Add a screenshot here</small>
-            </div>
+            <img src="assets/creative/emotion-analysis.webp" alt="Emotion Analysis dashboard showing mood distribution, mood by project and a mood trend chart over time" loading="lazy">
           </div>
           <div class="pbody">
             <div class="ptag">In use</div>
