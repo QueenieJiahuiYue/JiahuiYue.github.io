@@ -57,17 +57,28 @@ details.acc[open] .acc-chevron{transform:rotate(90deg)}
 .pcard{grid-column:span 6;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
 .pcard:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.4);box-shadow:0 14px 34px rgba(123,97,184,.12)}
 .pcard.wide{grid-column:span 12}
-.pshot{background:linear-gradient(135deg,var(--soft),var(--soft2));position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden;padding:16px}
-.pshot img{width:100%;max-height:360px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in;transition:transform .2s;background:#fff;box-shadow:0 2px 10px rgba(44,42,48,.06)}
+.pshot{background:#fff;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px 20px 20px}
+.pshot img{max-width:100%;width:auto;max-height:340px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in;transition:transform .2s;box-shadow:0 4px 18px rgba(44,42,48,.10)}
 .pshot img:hover{transform:scale(1.015)}
-.pshot-split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pshot-split img{width:100%;max-height:300px}
-.pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8}
+.pshot-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:4px 20px 20px}
+.pshot-split img{width:100%;max-height:300px;max-width:none}
+.pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8;padding:40px 16px}
 .pshot .ph-empty svg{opacity:.55}
 .pshot .ph-empty small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
-.pbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.pbody{padding:22px 22px 22px;display:flex;flex-direction:column;flex:1}
 .ptag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm);font-weight:700}
+.ptype{font-size:13.5px;color:var(--ink-soft);font-style:italic;margin:3px 0 0}
 .pcard h3{margin:9px 0 12px;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
+
+/* Side-by-side variant (text left, image right) */
+.pcard.side{flex-direction:row;align-items:stretch}
+.pcard.side .pbody{flex:1.35;min-width:0}
+.pcard.side .pshot{flex:0 0 240px;padding:20px;border-left:1px solid var(--line)}
+.pcard.side .pshot img{max-height:420px}
+@media(max-width:760px){
+  .pcard.side{flex-direction:column}
+  .pcard.side .pshot{border-left:0;border-top:1px solid var(--line)}
+}
 .pcard p{margin:0;font-size:14px;color:var(--muted);flex:1;line-height:1.6}
 .pstory{display:flex;flex-direction:column;gap:12px}
 .pstory-row{padding-left:14px;border-left:2px solid var(--line)}
@@ -144,13 +155,11 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
 
       <div class="proj-grid">
 
-        <article class="pcard">
-          <div class="pshot">
-            <img src="assets/creative/shared-finance.png" alt="TwoGather app screen showing who owes whom and a form to add a shared expense" loading="lazy">
-          </div>
+        <article class="pcard wide side">
           <div class="pbody">
             <div class="ptag">In use · 2 users</div>
-            <h3>Shared Home Finance</h3>
+            <h3>Together</h3>
+            <p class="ptype">A household budget management app, built for two.</p>
             <div class="pstory">
               <div class="pstory-row fix">
                 <span class="pstory-label">The problem</span>
@@ -158,7 +167,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
               </div>
               <div class="pstory-row">
                 <span class="pstory-label">How it feels now</span>
-                <p>Whoever pays logs it, the balance updates instantly, and whoever owes more just buys the next round of groceries. No more monthly math nights.</p>
+                <p>Whoever pays logs it and the balance updates instantly. It's saved us real time — no more sitting down once a month to do the math, and whoever owes more just buys the next round of groceries.</p>
               </div>
             </div>
             <div class="pchips"><span>Expense tracking</span><span>Automation</span></div>
@@ -167,13 +176,12 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
               <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
             </div>
           </div>
+          <div class="pshot">
+            <img src="assets/creative/shared-finance.png" alt="Together app screen showing who owes whom and a form to add a shared expense" loading="lazy">
+          </div>
         </article>
 
         <article class="pcard wide">
-          <div class="pshot pshot-split">
-            <img src="assets/creative/planning-today.png" alt="Project OS Today view with morning journal, sleep check-in and to-do list" loading="lazy">
-            <img src="assets/creative/planning-priority.png" alt="Project OS zoomed priority map showing important and urgent tasks" loading="lazy">
-          </div>
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Personal Planning System</h3>
@@ -193,12 +201,13 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
               <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
             </div>
           </div>
+          <div class="pshot pshot-split">
+            <img src="assets/creative/planning-today.png" alt="Project OS Today view with morning journal, sleep check-in and to-do list" loading="lazy">
+            <img src="assets/creative/planning-priority.png" alt="Project OS zoomed priority map showing important and urgent tasks" loading="lazy">
+          </div>
         </article>
 
         <article class="pcard">
-          <div class="pshot">
-            <img src="assets/creative/german-learning.webp" alt="German C1 reading article with clickable phrase highlights, listen-aloud controls and a progress and reflection panel" loading="lazy">
-          </div>
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>German Learning Companion</h3>
@@ -218,12 +227,12 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
               <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
             </div>
           </div>
+          <div class="pshot">
+            <img src="assets/creative/german-learning.webp" alt="German C1 reading article with clickable phrase highlights, listen-aloud controls and a progress and reflection panel" loading="lazy">
+          </div>
         </article>
 
         <article class="pcard">
-          <div class="pshot">
-            <img src="assets/creative/this-website.png" alt="Screenshot of the Professional page of this website" loading="lazy">
-          </div>
           <div class="pbody">
             <div class="ptag">Live</div>
             <h3>This Website</h3>
@@ -239,12 +248,12 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
               <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
             </div>
           </div>
+          <div class="pshot">
+            <img src="assets/creative/this-website.png" alt="Screenshot of the Professional page of this website" loading="lazy">
+          </div>
         </article>
 
         <article class="pcard">
-          <div class="pshot">
-            <img src="assets/creative/emotion-analysis.webp" alt="Emotion Analysis dashboard showing mood distribution, mood by project and a mood trend chart over time" loading="lazy">
-          </div>
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Emotional Reflection</h3>
@@ -262,6 +271,9 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
             <div class="plinks">
               <span class="soon">Private build — not yet shared</span>
             </div>
+          </div>
+          <div class="pshot">
+            <img src="assets/creative/emotion-analysis.webp" alt="Emotion Analysis dashboard showing mood distribution, mood by project and a mood trend chart over time" loading="lazy">
           </div>
         </article>
 
