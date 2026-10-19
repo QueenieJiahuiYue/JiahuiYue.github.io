@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Creative — Jiahui (Queenie) Yue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF9F6;--paper:#FFFDFC;--ink:#2C2A30;--muted:#6D6872;--line:#E8E0D8;
+  --accent:#7B61B8;--warm:#B074A0;--soft:#F2EEF8;--soft2:#F6EFEF;--ink-soft:#5E5B66;
+  --grad:linear-gradient(120deg,#7B61B8,#B074A0 55%,#E0A0A8);
+  --max:1120px;--fh:"Poppins",system-ui,sans-serif;--fb:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+a{color:inherit}
+
+nav.main-nav{position:sticky;top:0;z-index:30;background:rgba(251,249,246,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #EBE4DC}
+nav.main-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.main-nav .brand{font-family:var(--fh);font-weight:700;font-size:19px;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:9px}
+.main-nav .brand .mark{width:24px;height:24px;border-radius:8px;background:var(--grad)}
+.main-nav .navlinks{display:flex;gap:30px;align-items:center}
+.main-nav .navlinks a{font-family:var(--fh);font-weight:500;font-size:14px;text-decoration:none;color:var(--ink-soft);transition:color .2s}
+.main-nav .navlinks a:hover,.main-nav .navlinks a.active{color:var(--accent)}
+.main-nav .nav-cta{background:var(--ink);color:#fff !important;padding:10px 18px;border-radius:10px;font-size:13px !important}
+.main-nav .nav-cta:hover{background:var(--accent)}
+@media (max-width:760px){.main-nav .navlinks a:not(.nav-cta){display:none}}
+
+.intro{padding:64px 0 36px;border-bottom:1px solid var(--line)}
+.intro .kicker{display:block;margin-bottom:14px;font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.intro h1{font-family:var(--fh);font-weight:600;font-size:clamp(34px,4.6vw,52px);letter-spacing:-.03em;line-height:1.1;max-width:17ch;margin:0 0 18px}
+.intro p{font-size:18px;color:var(--ink-soft);max-width:62ch}
+.intro .media-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.intro .media-tags span{padding:7px 12px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;color:var(--accent);background:var(--paper)}
+
+section.ai-made{padding:52px 0 10px}
+.ai-made-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:32px;align-items:end;margin-bottom:30px}
+.section-label{font-size:10px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--warm);margin-bottom:9px}
+.ai-made h2{margin:0;font-family:var(--fh);font-weight:600;font-size:clamp(30px,3.6vw,42px);line-height:1.08;letter-spacing:-.025em}
+.ai-made-deck{font-size:16px;color:var(--ink-soft);max-width:600px}
+
+.proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.pcard{grid-column:span 6;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pcard:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.4);box-shadow:0 14px 34px rgba(123,97,184,.12)}
+.pcard.wide{grid-column:span 12}
+.pshot{aspect-ratio:16/9;background:
+    linear-gradient(135deg,var(--soft),var(--soft2));
+  position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);overflow:hidden}
+.pshot img{width:100%;height:100%;object-fit:cover;display:block}
+.pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8}
+.pshot .ph-empty svg{opacity:.55}
+.pshot .ph-empty small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.pbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.ptag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm);font-weight:700}
+.pcard h3{margin:9px 0 8px;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
+.pcard p{margin:0;font-size:14px;color:var(--muted);flex:1}
+.pchips{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.pchips span{padding:5px 9px;border:1px solid var(--line);font-size:11px;background:#fff;border-radius:6px;color:var(--ink-soft)}
+.plinks{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
+.plinks a{font-family:var(--fh);font-size:12.5px;font-weight:600;text-decoration:none;padding:8px 13px;border-radius:9px;transition:all .2s}
+.plinks a.demo{background:var(--ink);color:#fff}
+.plinks a.demo:hover{background:var(--accent)}
+.plinks a.code{border:1px solid var(--line);color:var(--ink-soft)}
+.plinks a.code:hover{border-color:var(--accent);color:var(--accent)}
+.plinks .soon{font-family:var(--fb);font-size:12px;color:#B3ABC0;padding:8px 2px}
+
+.ai-made-footnote{margin-top:26px;padding:18px 20px;background:var(--soft);border:1px solid #DDD3EA;border-left:4px solid var(--accent);border-radius:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+.ai-made-footnote a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+
+.coming{padding:48px 0 60px;border-top:1px solid var(--line);margin-top:40px}
+.coming h2{font-family:var(--fh);font-weight:600;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em;margin-bottom:12px}
+.coming p{font-size:15px;color:var(--muted);max-width:60ch}
+
+footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+
+@media(max-width:900px){
+  .ai-made-head{grid-template-columns:1fr}
+  .pcard{grid-column:span 12}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .navlinks{display:none}
+}
+</style>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark"></span>Queenie Yue</a>
+    <div class="navlinks">
+      <a href="professional.html">Professional</a>
+      <a href="personal.html">Personal</a>
+      <a href="creative.html" class="active">Creative</a>
+      <a class="nav-cta" href="index.html#contact">Let's talk</a>
+    </div>
+  </div>
+</nav>
+
+<header class="intro wrap">
+  <span class="kicker">Creative</span>
+  <h1>How I create — through image, paint, craft, and AI.</h1>
+  <p>Creativity shows up for me in a few different forms: visual work, hands-on craft, and — increasingly — building small, working tools from scratch with AI as a building partner. The section below is the newest one: things I designed and shipped myself, vibe-coded end to end.</p>
+  <div class="media-tags">
+    <span>📷 Image</span><span>🎨 Paint</span><span>🧵 Craft</span><span>🤖 AI-built tools</span>
+  </div>
+</header>
+
+<section class="ai-made wrap" id="built-with-ai">
+  <div class="ai-made-head">
+    <div>
+      <div class="section-label">Vibe coding</div>
+      <h2>Built with AI.</h2>
+    </div>
+    <div class="ai-made-deck">
+      Small frustrations and recurring needs, turned into working tools — AI makes the experimentation cheap enough that I don't have to wait for the perfect product to exist. Each one below started as "I wish this existed" and ended as something I actually use.
+    </div>
+  </div>
+
+  <div class="proj-grid">
+
+    <article class="pcard">
+      <div class="pshot">
+        <div class="ph-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <small>Add a screenshot here</small>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">In use</div>
+        <h3>Personal Planning System</h3>
+        <p>A workspace for schedule checking, daily planning, journals, routines, and reflection — built around how I actually organize my life rather than a generic productivity template.</p>
+        <div class="pchips"><span>Planning</span><span>Journal</span><span>Routine</span></div>
+        <div class="plinks">
+          <span class="soon">Live demo — coming soon</span>
+          <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard">
+      <div class="pshot">
+        <div class="ph-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <small>Add a screenshot here</small>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">In use · 2 users</div>
+        <h3>Shared Home Finance</h3>
+        <p>A tool my roommate and I use to record shared expenses and automatically offset what we owe each other, so we don't need to keep transferring small amounts back and forth.</p>
+        <div class="pchips"><span>Expense tracking</span><span>Automation</span></div>
+        <div class="plinks">
+          <span class="soon">Live demo — coming soon</span>
+          <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard">
+      <div class="pshot">
+        <div class="ph-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <small>Add a screenshot here</small>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">Live</div>
+        <h3>This Website</h3>
+        <p>My personal website is itself an AI-assisted build — a place where research, work, ideas, and experiments can keep evolving. You're looking at it right now.</p>
+        <div class="pchips"><span>Portfolio</span><span>HTML/CSS</span></div>
+        <div class="plinks">
+          <a class="demo" href="index.html">View live ↗</a>
+          <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard">
+      <div class="pshot">
+        <div class="ph-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <small>Add a screenshot here</small>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">In progress</div>
+        <h3>Emotional Reflection</h3>
+        <p>A tool for recording emotional experiences and identifying patterns over time: recurring triggers, responses, and what changes them.</p>
+        <div class="pchips"><span>Self-understanding</span><span>Patterns</span></div>
+        <div class="plinks">
+          <span class="soon">Private build — not yet shared</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard">
+      <div class="pshot">
+        <div class="ph-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <small>Add a screenshot here</small>
+        </div>
+      </div>
+      <div class="pbody">
+        <div class="ptag">In progress</div>
+        <h3>Main Quest</h3>
+        <p>A game-like life system that helps people remember their main quest when daily side quests — email, admin, errands, meetings — start taking over.</p>
+        <div class="pchips"><span>Life system</span><span>Game mechanics</span></div>
+        <div class="plinks">
+          <span class="soon">Live demo — coming soon</span>
+          <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard wide">
+      <div class="pbody" style="padding:26px 28px">
+        <div class="ptag">My approach</div>
+        <h3 style="font-size:24px">Small friction → working prototype.</h3>
+        <p>I build when a workflow feels unnecessarily heavy, when an idea keeps coming back, or when I want a tool that doesn't quite exist in the form I need. AI makes experimentation cheap enough to be part of everyday life — not a separate "coding project," just how I solve things now.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="ai-made-footnote">
+    Each project started as a real, personal need — not a tutorial exercise. For the thinking behind <em>why</em> I build this way, and how it connects to how I use AI at work, see the full <a href="how-i-work-with-ai.html">How I Work with AI</a> page.
+  </div>
+</section>
+
+<section class="coming wrap">
+  <h2>Image, paint &amp; craft — more to come.</h2>
+  <p>This part of the page is still being put together. For now, the AI-built tools above are the clearest example of what I make when I have an idea and the means to act on it.</p>
+</section>
+
+<footer class="site wrap">
+  <span>© 2026 Jiahui (Queenie) Yue</span>
+  <span>Heidelberg, Germany · open to relocate</span>
+</footer>
+
+</body>
+</html>
