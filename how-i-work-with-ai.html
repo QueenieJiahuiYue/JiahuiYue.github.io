@@ -230,35 +230,21 @@ h1{
 }
 .build h2{font-size:58px;line-height:.95}
 .build-deck{font-size:17px;color:#3b3832;max-width:650px}
-.projects{
-  display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
+.life-ai-link{
+  margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  padding:24px 26px;background:var(--soft);border:1px solid #DDD3EA;border-left:4px solid var(--accent);
+  text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s;
 }
-.project{
-  background:var(--paper);border:1px solid var(--line);padding:22px;
-  min-height:230px;display:flex;flex-direction:column;justify-content:space-between;
+.life-ai-link:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(123,97,184,.14)}
+.life-ai-link-text{max-width:620px}
+.life-ai-link-label{display:block;font-family:"DM Sans",sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700}
+.life-ai-link-text b{display:block;font-family:"Poppins",sans-serif;font-size:19px;line-height:1.35;margin:6px 0 7px;font-weight:600}
+.life-ai-link-sub{font-size:12.5px;line-height:1.5;color:var(--muted);font-weight:600}
+.life-ai-link-arrow{
+  font-family:"Poppins",sans-serif;font-size:14px;font-weight:700;color:var(--accent);
+  white-space:nowrap;
 }
-.project.a{grid-column:span 7;background:var(--soft2)}
-.project.b{grid-column:span 5}
-.project.c{grid-column:span 5}
-.project.d{grid-column:span 7}
-.project.e{grid-column:span 7}
-.project.f{grid-column:span 5;background:#ecefe9}
-.tag{
-  font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm)
-}
-.project h3{
-  margin:9px 0 8px;font-family:"Poppins",sans-serif;font-weight:500;
-  font-size:31px;line-height:1.05;letter-spacing:-.025em;
-}
-.project p{margin:0;font-size:14px;color:var(--muted);max-width:560px}
-.project footer{
-  margin-top:20px;padding-top:11px;border-top:1px solid var(--line);
-  font-size:12px;color:#58544d;
-}
-.project .chips{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-.project .chips span{
-  padding:5px 8px;border:1px solid var(--line);font-size:11px;background:white
-}
+@media(max-width:640px){.life-ai-link{flex-direction:column;align-items:flex-start}}
 
 .closing{
   margin-top:46px;border-top:3px double var(--ink);padding-top:22px;
@@ -308,7 +294,7 @@ footer.site{
 .hero h1{white-space:nowrap}
 .practice h2{white-space:nowrap}
 .hero-top{align-items:center;grid-template-columns:minmax(0,1.7fr) minmax(310px,.55fr)}
-.practice-head{grid-template-columns:minmax(360px,.82fr) minmax(0,1.18fr);align-items:start}
+.practice-head{grid-template-columns:1fr;align-items:start}
 .core-question{
   border-left:2px solid var(--accent);
   padding:12px 0 12px 26px;
@@ -376,12 +362,6 @@ footer.site{
   line-height:1.5;
   color:var(--muted);
 }
-.practice-points{display:grid;gap:12px}
-.practice-point{padding:13px 0;border-top:1px solid var(--line)}
-.practice-point:first-child{border-top:0;padding-top:0}
-.practice-point b{display:block;font-family:"Poppins",sans-serif;font-size:15px;margin-bottom:4px;color:var(--ink)}
-.practice-point span{font-size:13.5px;line-height:1.5;color:var(--muted)}
-.practice-point.emphasis b{color:var(--accent)}
 @media(max-width:1100px){
   .hero h1,.practice h2,.build h2{font-size:38px}
   .hero h1,.practice h2{white-space:normal}
@@ -450,7 +430,7 @@ footer.site{
       <b>A Mixed-Methods Study of AI Adoption in China</b><br/>
       My research asked how AI is changing early-career work — and what that means for how juniors learn, develop judgment, and grow into larger responsibility.
     </p>
-    <a class="paper-link" href="#" onclick="alert('Replace this with your Overleaf URL.');return false;">Read the paper on Overleaf ↗</a>
+    <a class="paper-link" href="https://www.overleaf.com/read/cmvqcgnspppy#fff4d9" target="_blank" rel="noopener">Read the paper on Overleaf ↗</a>
     <div class="research-takeaway">
       <div class="takeaway-label">What I took from the research</div>
       <p>The safest direction is not a permanently “safe” occupation, but work that keeps me close to real-world feedback, progressive responsibility, and opportunities to redesign how humans and AI work together.</p>
@@ -501,23 +481,9 @@ footer.site{
 <section class="practice" id="work-ai">
   <div class="practice-head">
     <div>
-      <div class="section-label">02.1 / AI practice · At work</div>
+      <div class="section-label">02 / AI practice · At work</div>
       <h2>How I use AI at work.</h2>
       <p class="practice-left-note"><b>I decided to test the research on myself.</b> Instead of using AI only to finish tasks faster, I use it to make the surrounding work easier to understand.</p>
-    </div>
-    <div class="practice-points">
-      <div class="practice-point">
-        <b>AI does the first pass.</b>
-        <span>I use the review to reconstruct the workstream, decision logic, dependencies, and what could come next.</span>
-      </div>
-      <div class="practice-point emphasis">
-        <b>The paper became a learning loop.</b>
-        <span>I now use that loop on real projects to move from completing a task toward understanding — and eventually owning — a larger piece of the work.</span>
-      </div>
-      <div class="practice-point">
-        <b>AI still cannot replace the apprenticeship around the work.</b>
-        <span>I still need feedback, mentoring, lower-risk decisions, and real opportunities to take responsibility.</span>
-      </div>
     </div>
   </div>
 
@@ -607,7 +573,7 @@ footer.site{
 <section class="build" id="life-ai">
   <div class="build-head">
     <div>
-      <div class="section-label">02.2 / AI practice · Everyday life</div>
+      <div class="section-label">03 / AI practice · Everyday life</div>
       <h2>How I use AI<br/>in everyday life.</h2>
     </div>
     <div class="build-deck">
@@ -615,82 +581,14 @@ footer.site{
     </div>
   </div>
 
-  <div class="projects">
-    <article class="project a">
-      <div>
-        <div class="tag">In use</div>
-        <h3>Personal Planning System</h3>
-        <p>
-          A workspace for schedule checking, daily planning, journals, routines, and reflection —
-          built around how I actually organize my life rather than around a generic productivity template.
-        </p>
-        <div class="chips">
-          <span>Schedule</span><span>Daily Plan</span><span>Journal</span><span>Routine</span><span>Reflection</span>
-        </div>
-      </div>
-      <footer>Built to reduce the mental overhead of managing everyday life.</footer>
-    </article>
-
-    <article class="project b">
-      <div>
-        <div class="tag">In use · 2 users</div>
-        <h3>Shared Home Finance</h3>
-        <p>
-          A tool my roommate and I use to record shared expenses and automatically offset what we owe each other,
-          so we do not need to keep transferring small amounts back and forth.
-        </p>
-      </div>
-      <footer>Current satisfaction: 2 / 2 users.</footer>
-    </article>
-
-    <article class="project c">
-      <div>
-        <div class="tag">Live</div>
-        <h3>This Website</h3>
-        <p>
-          My personal website is itself an AI-assisted build — a place where research, work, ideas,
-          and experiments can keep evolving.
-        </p>
-      </div>
-      <footer>The website is part portfolio, part laboratory.</footer>
-    </article>
-
-    <article class="project d">
-      <div>
-        <div class="tag">In progress</div>
-        <h3>Emotional Reflection</h3>
-        <p>
-          A tool for recording emotional experiences and identifying patterns over time:
-          recurring triggers, responses, and what changes them.
-        </p>
-      </div>
-      <footer>Exploring AI for self-understanding, not only productivity.</footer>
-    </article>
-
-    <article class="project e">
-      <div>
-        <div class="tag">In progress</div>
-        <h3>Main Quest</h3>
-        <p>
-          A game-like life system that helps people remember their main quest when daily side quests —
-          email, admin, errands, meetings, and small urgent tasks — start taking over.
-        </p>
-      </div>
-      <footer>The goal is not to gamify productivity. It is to protect direction.</footer>
-    </article>
-
-    <article class="project f">
-      <div>
-        <div class="tag">My approach</div>
-        <h3>Small friction → working prototype.</h3>
-        <p>
-          I build when a workflow feels unnecessarily heavy, when an idea keeps coming back,
-          or when I want a tool that does not quite exist in the form I need.
-        </p>
-      </div>
-      <footer>AI makes experimentation cheap enough to be part of everyday life.</footer>
-    </article>
-  </div>
+  <a class="life-ai-link" href="creative.html#built-with-ai">
+    <div class="life-ai-link-text">
+      <span class="life-ai-link-label">Built with AI · six small tools</span>
+      <b>Personal Planning System, TwoGather, This Website, Emotional Reflection, Main Quest, and the approach behind them.</b>
+      <span class="life-ai-link-sub">Each one started as a real, personal need — not a tutorial exercise.</span>
+    </div>
+    <span class="life-ai-link-arrow">See every project in detail on Creative →</span>
+  </a>
 </section>
 
 <section class="closing">

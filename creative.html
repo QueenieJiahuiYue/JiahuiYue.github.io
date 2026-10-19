@@ -360,6 +360,17 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
   lb.addEventListener('click', close);
   document.getElementById('lightboxClose').addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+
+  function openFromHash(){
+    if (!location.hash) return;
+    var el = document.querySelector(location.hash);
+    if (el && el.tagName === 'DETAILS') {
+      el.open = true;
+      el.scrollIntoView({ block: 'start' });
+    }
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 })();
 </script>
 
