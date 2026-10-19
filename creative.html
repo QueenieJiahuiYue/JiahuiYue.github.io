@@ -9,66 +9,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#FBF9F6;--paper:#FFFDFC;--ink:#2C2A30;--muted:#6D6872;--line:#E8E0D8;
-  --accent:#7B61B8;--warm:#B074A0;--soft:#F2EEF8;--soft2:#F6EFEF;--ink-soft:#5E5B66;
+  --bg:#FBF9F6;--bg-2:#F4EFE9;--ink:#2C2A30;--ink-soft:#5E5B66;--ink-faint:#9A96A0;--line:#EBE4DC;
+  --brand:#7B61B8;--brand-2:#B074A0;--brand-3:#E0A0A8;
   --grad:linear-gradient(120deg,#7B61B8,#B074A0 55%,#E0A0A8);
+  --shadow:0 4px 22px rgba(80,60,90,0.07);--shadow-lg:0 18px 46px rgba(123,97,184,0.16);
   --max:1120px;--fh:"Poppins",system-ui,sans-serif;--fb:"DM Sans",system-ui,sans-serif;--fc:"Caveat",cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
 a{color:inherit}
 
-nav.main-nav{position:sticky;top:0;z-index:30;background:rgba(251,249,246,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #EBE4DC}
+nav.main-nav{position:sticky;top:0;z-index:30;background:rgba(251,249,246,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.main-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .main-nav .brand{font-family:var(--fh);font-weight:700;font-size:19px;letter-spacing:-0.01em;text-decoration:none;display:flex;align-items:center;gap:9px}
 .main-nav .brand .mark{width:24px;height:24px;border-radius:8px;background:var(--grad)}
 .main-nav .navlinks{display:flex;gap:30px;align-items:center}
 .main-nav .navlinks a{font-family:var(--fh);font-weight:500;font-size:14px;text-decoration:none;color:var(--ink-soft);transition:color .2s}
-.main-nav .navlinks a:hover,.main-nav .navlinks a.active{color:var(--accent)}
+.main-nav .navlinks a:hover,.main-nav .navlinks a.active{color:var(--brand)}
 .main-nav .nav-cta{background:var(--ink);color:#fff !important;padding:10px 18px;border-radius:10px;font-size:13px !important}
-.main-nav .nav-cta:hover{background:var(--accent)}
+.main-nav .nav-cta:hover{background:var(--brand)}
 @media (max-width:760px){.main-nav .navlinks a:not(.nav-cta){display:none}}
 
-.intro{padding:64px 0 40px;border-bottom:1px solid var(--line)}
-.intro .kicker{display:block;margin-bottom:14px;font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.intro h1{font-family:var(--fh);font-weight:600;font-size:clamp(34px,4.6vw,52px);letter-spacing:-.03em;line-height:1.14;max-width:22ch;margin:0}
+.intro{padding:46px 0 26px}
+.intro .kicker{display:block;margin-bottom:14px;font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.intro h1{font-family:var(--fh);font-weight:600;font-size:clamp(32px,4.4vw,48px);letter-spacing:-.03em;line-height:1.14;max-width:22ch;margin:0}
 
-/* Accordions */
-.acc-list{padding:34px 0 64px;display:flex;flex-direction:column;gap:14px}
-details.acc{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
-details.acc[open]{border-color:rgba(123,97,184,.4)}
+/* Accordions, matched to the Professional page's .exp / .trow pattern */
+.acc-list{padding:10px 0 60px;display:flex;flex-direction:column;gap:16px}
+details.acc{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s}
+details.acc[open]{box-shadow:var(--shadow-lg)}
 details.acc summary{list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 details.acc summary::-webkit-details-marker{display:none}
 .acc-title{display:flex;align-items:center;gap:14px}
-.acc-emoji{font-size:22px}
-.acc-title h2{font-family:var(--fh);font-weight:600;font-size:22px;letter-spacing:-.015em;margin:0}
-.acc-title small{display:block;font-size:12px;color:var(--muted);margin-top:2px;font-weight:500}
-.acc-chevron{font-size:14px;color:var(--accent);transition:transform .25s;flex-shrink:0}
-details.acc[open] .acc-chevron{transform:rotate(90deg)}
-.acc-body{padding:0 26px 30px}
+.acc-emoji{font-size:22px;width:44px;height:44px;border-radius:12px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acc-title h2{font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em;margin:0}
+.acc-title small{display:block;font-size:12.5px;color:var(--ink-faint);margin-top:2px;font-weight:500}
+.chev{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-soft);transition:transform .3s,background .2s;font-size:14px}
+details.acc[open] .chev{transform:rotate(90deg);background:var(--bg-2);color:var(--brand)}
+.acc-body{padding:0 26px 28px}
 
-.acc-note{font-size:17px;color:var(--muted);padding:40px 10px;text-align:center}
+.acc-note{font-size:16px;color:var(--ink-faint);padding:36px 10px;text-align:center}
 
 /* Built-with-AI section */
-.ai-lead{font-family:var(--fc);font-size:23px;line-height:1.4;color:var(--accent);max-width:62ch;margin:4px 0 26px;transform:rotate(-0.4deg)}
+.ai-lead{font-family:var(--fc);font-size:21px;line-height:1.3;color:var(--brand);max-width:none;white-space:nowrap;margin:0 0 22px;transform:rotate(-0.4deg)}
 .proj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.pcard{grid-column:span 6;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
-.pcard:hover{transform:translateY(-3px);border-color:rgba(123,97,184,.4);box-shadow:0 14px 34px rgba(123,97,184,.12)}
+.pcard{grid-column:span 6;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .pcard.wide{grid-column:span 12}
-.pshot{background:#fff;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px 20px 20px}
-.pshot img{max-width:100%;width:auto;max-height:340px;object-fit:contain;display:block;border-radius:8px;cursor:zoom-in;transition:transform .2s;box-shadow:0 4px 18px rgba(44,42,48,.10)}
+.pshot{background:#fff;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:0 20px 20px}
+.pshot img{max-width:100%;width:auto;max-height:320px;object-fit:contain;display:block;border-radius:10px;cursor:zoom-in;transition:transform .2s;box-shadow:0 4px 18px rgba(44,42,48,.10)}
 .pshot img:hover{transform:scale(1.015)}
-.pshot-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:4px 20px 20px}
-.pshot-split img{width:100%;max-height:300px;max-width:none}
-.pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#9b93a8;padding:40px 16px}
+.pshot-split{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 20px 20px}
+.pshot-split img{width:100%;max-height:280px;max-width:none}
+.pshot .ph-empty{display:flex;flex-direction:column;align-items:center;gap:8px;color:#AEA8B6;padding:40px 16px}
 .pshot .ph-empty svg{opacity:.55}
 .pshot .ph-empty small{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
-.pbody{padding:22px 22px 22px;display:flex;flex-direction:column;flex:1}
-.ptag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--warm);font-weight:700}
-.ptype{font-size:13.5px;color:var(--ink-soft);font-style:italic;margin:3px 0 0}
-.pcard h3{margin:9px 0 12px;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
+.pbody{padding:22px;display:flex;flex-direction:column;flex:1}
+.ptag{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--brand-2);font-weight:700}
+.ptype{font-size:13.5px;color:var(--ink-faint);margin:3px 0 14px}
+.pcard h3{margin:9px 0 0;font-family:var(--fh);font-weight:600;font-size:21px;letter-spacing:-.015em}
 
 /* Side-by-side variant (text left, image right) */
 .pcard.side{flex-direction:row;align-items:stretch}
@@ -79,27 +81,25 @@ details.acc[open] .acc-chevron{transform:rotate(90deg)}
   .pcard.side{flex-direction:column}
   .pcard.side .pshot{border-left:0;border-top:1px solid var(--line)}
 }
-.pcard p{margin:0;font-size:14px;color:var(--muted);flex:1;line-height:1.6}
-.pstory{display:flex;flex-direction:column;gap:12px}
-.pstory-row{padding-left:14px;border-left:2px solid var(--line)}
-.pstory-row.fix{border-left-color:var(--accent)}
-.pstory-label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--muted);margin-bottom:3px}
-.pstory-row.fix .pstory-label{color:var(--accent)}
-.pstory-row p{font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
-.pchips{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-.pchips span{padding:5px 9px;border:1px solid var(--line);font-size:11px;background:#fff;border-radius:6px;color:var(--ink-soft)}
-.plinks{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap}
+
+.pstory{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+.pstory-problem{font-size:14px;color:var(--ink-soft);line-height:1.6}
+.pstory-now{background:var(--bg-2);border-radius:14px;padding:13px 15px}
+.pstory-now .label{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:700;color:var(--brand);margin-bottom:5px}
+.pstory-now p{font-size:13.5px;line-height:1.58;color:var(--ink)}
+.pcard p{margin:0}
+.pchips{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+.pchips span{padding:6px 11px;font-size:11.5px;background:var(--bg-2);border-radius:8px;color:var(--ink)}
+.plinks{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .plinks a{font-family:var(--fh);font-size:12.5px;font-weight:600;text-decoration:none;padding:8px 13px;border-radius:9px;transition:all .2s}
 .plinks a.demo{background:var(--ink);color:#fff}
-.plinks a.demo:hover{background:var(--accent)}
-.plinks a.code{border:1px solid var(--line);color:var(--ink-soft)}
-.plinks a.code:hover{border-color:var(--accent);color:var(--accent)}
-.plinks .soon{font-family:var(--fb);font-size:12px;color:#B3ABC0;padding:8px 2px}
+.plinks a.demo:hover{background:var(--brand)}
+.plinks .soon{font-family:var(--fb);font-weight:600;font-size:11.5px;color:var(--ink-faint);background:var(--bg-2);padding:6px 11px;border-radius:8px}
 
-.ai-made-footnote{margin-top:22px;padding:18px 20px;background:var(--soft);border:1px solid #DDD3EA;border-left:4px solid var(--accent);border-radius:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-.ai-made-footnote a{color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+.ai-made-footnote{margin-top:22px;padding:16px 18px;background:var(--bg-2);border-radius:14px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+.ai-made-footnote a{color:var(--brand);font-weight:600;text-decoration:none;border-bottom:1px solid var(--brand)}
 
-footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-faint)}
 
 /* Lightbox */
 .lightbox{position:fixed;inset:0;background:rgba(26,22,30,.82);display:none;align-items:center;justify-content:center;padding:28px;z-index:100;cursor:zoom-out}
@@ -109,6 +109,9 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
 
 @media(max-width:900px){
   .pcard{grid-column:span 12}
+}
+@media(max-width:680px){
+  .ai-lead{white-space:normal}
 }
 @media(max-width:600px){
   .wrap{padding:0 18px}
@@ -148,36 +151,32 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <small>Tools I made for my own life</small>
         </div>
       </div>
-      <span class="acc-chevron">▸</span>
+      <span class="chev">▸</span>
     </summary>
     <div class="acc-body">
-      <p class="ai-lead">I kept thinking about how AI could actually make my life a little easier — so I just built the tools myself. Here's what came out of that 🙂</p>
+      <p class="ai-lead">I kept thinking about how AI could actually make my life easier — so I just built the tools myself 🙂</p>
 
       <div class="proj-grid">
 
         <article class="pcard wide side">
           <div class="pbody">
             <div class="ptag">In use · 2 users</div>
-            <h3>Together</h3>
+            <h3>TwoGather</h3>
             <p class="ptype">A household budget management app, built for two.</p>
             <div class="pstory">
-              <div class="pstory-row fix">
-                <span class="pstory-label">The problem</span>
-                <p>My roommate and I kept household costs in Notes and did the math once a month — we always forgot something, and neither of us wanted a whole app just for two people.</p>
-              </div>
-              <div class="pstory-row">
-                <span class="pstory-label">How it feels now</span>
+              <p class="pstory-problem">My roommate and I kept household costs in Notes and did the math once a month — we always forgot something.</p>
+              <div class="pstory-now">
+                <span class="label">How it feels now</span>
                 <p>Whoever pays logs it and the balance updates instantly. It's saved us real time — no more sitting down once a month to do the math, and whoever owes more just buys the next round of groceries.</p>
               </div>
             </div>
-            <div class="pchips"><span>Expense tracking</span><span>Automation</span></div>
+            <div class="pchips"><span>Expense tracking</span><span>Automation</span><span>Clarity</span></div>
             <div class="plinks">
-              <span class="soon">Live demo — coming soon</span>
-              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+              <span class="soon">Coming soon</span>
             </div>
           </div>
           <div class="pshot">
-            <img src="assets/creative/shared-finance.png" alt="Together app screen showing who owes whom and a form to add a shared expense" loading="lazy">
+            <img src="assets/creative/shared-finance.png" alt="TwoGather app screen showing who owes whom and a form to add a shared expense" loading="lazy">
           </div>
         </article>
 
@@ -186,19 +185,15 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
             <div class="ptag">In use</div>
             <h3>Personal Planning System</h3>
             <div class="pstory">
-              <div class="pstory-row fix">
-                <span class="pstory-label">The problem</span>
-                <p>Every planning app I tried felt almost right, but never quite matched how I actually think about my own life.</p>
-              </div>
-              <div class="pstory-row">
-                <span class="pstory-label">How it feels now</span>
-                <p>Monthly goals as the anchor, a priority matrix for what's urgent vs. important, a morning journal, and regular reflections — it's become the place where my thinking about my life actually lives.</p>
+              <p class="pstory-problem">Every planning app I tried felt almost right, but never quite matched how I actually think about my own life.</p>
+              <div class="pstory-now">
+                <span class="label">How it feels now</span>
+                <p>My logic runs on months and weeks: each cycle gets its own goals, and I set priorities first, before anything else gets planned. Every single day I log how I'm feeling and what I want to get done.</p>
               </div>
             </div>
             <div class="pchips"><span>Monthly planning</span><span>Priority matrix</span><span>Journal</span></div>
             <div class="plinks">
-              <span class="soon">Live demo — coming soon</span>
-              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+              <span class="soon">Coming soon</span>
             </div>
           </div>
           <div class="pshot pshot-split">
@@ -207,24 +202,21 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           </div>
         </article>
 
-        <article class="pcard">
+        <article class="pcard wide side">
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>German Learning Companion</h3>
+            <p class="ptype">An interactive reading companion for my C1 exam.</p>
             <div class="pstory">
-              <div class="pstory-row fix">
-                <span class="pstory-label">The problem</span>
-                <p>Most German reading-practice tools either quiz you or just hand you a translation — neither one actually teaches me to read.</p>
-              </div>
-              <div class="pstory-row">
-                <span class="pstory-label">How it feels now</span>
-                <p>I tap any phrase for an explanation, double-click to hear it, then drill it with back-translation. It remembers where I stopped and logs what I still need to practice.</p>
+              <p class="pstory-problem">Most German reading-practice tools either quiz you or just hand you a translation — neither actually teaches me to read.</p>
+              <div class="pstory-now">
+                <span class="label">How it feels now</span>
+                <p>My process: take an article, first learn the vocabulary, phrases and sentence structures, then retell it in my own words and build new sentences with what I just learned. This app matches that process exactly, and makes my knowledge gaps easy to see — so review is faster.</p>
               </div>
             </div>
             <div class="pchips"><span>German C1</span><span>Interactive reading</span><span>Spaced practice</span></div>
             <div class="plinks">
-              <span class="soon">Live demo — coming soon</span>
-              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+              <span class="soon">Coming soon</span>
             </div>
           </div>
           <div class="pshot">
@@ -232,20 +224,16 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           </div>
         </article>
 
-        <article class="pcard">
+        <article class="pcard wide side">
           <div class="pbody">
             <div class="ptag">Live</div>
             <h3>This Website</h3>
             <div class="pstory">
-              <div class="pstory-row">
-                <span class="pstory-label">What it is</span>
-                <p>My personal site is itself an AI-assisted build — a place where research, work, ideas, and experiments can keep evolving. You're looking at it right now.</p>
-              </div>
+              <p class="pstory-problem">My personal site is itself an AI-assisted build — a place where research, work, ideas, and experiments can keep evolving.</p>
             </div>
             <div class="pchips"><span>Portfolio</span><span>HTML/CSS</span></div>
             <div class="plinks">
-              <a class="demo" href="index.html">View live ↗</a>
-              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+              <a class="demo" href="professional.html">View live ↗</a>
             </div>
           </div>
           <div class="pshot">
@@ -253,18 +241,15 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           </div>
         </article>
 
-        <article class="pcard">
+        <article class="pcard wide side">
           <div class="pbody">
             <div class="ptag">In use</div>
             <h3>Emotional Reflection</h3>
             <div class="pstory">
-              <div class="pstory-row fix">
-                <span class="pstory-label">The problem</span>
-                <p>My morning journal entries were full of feelings I never actually looked back at or learned from.</p>
-              </div>
-              <div class="pstory-row">
-                <span class="pstory-label">How it feels now</span>
-                <p>Each morning it reads what I wrote and reflects it back with a bit of encouragement and clarity — a small nudge that helps me decide how to spend the day.</p>
+              <p class="pstory-problem">My morning journal entries were full of feelings I never actually looked back at or learned from.</p>
+              <div class="pstory-now">
+                <span class="label">How it feels now</span>
+                <p>Lately I combined this with my Personal Planning System, so I log my mood right after finishing specific tasks each day. That shows me how my emotional state shifts across different times and activities — and what energizes me versus what drains me, so I can optimize my life around it.</p>
               </div>
             </div>
             <div class="pchips"><span>Self-understanding</span><span>Daily reflection</span></div>
@@ -277,30 +262,20 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           </div>
         </article>
 
-        <article class="pcard">
-          <div class="pshot">
-            <div class="ph-empty">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="#9b93a8" stroke-width="1.4"/><path d="M3 15l5-5 4 4 5-6 4 5" stroke="#9b93a8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <small>Add a screenshot here</small>
-            </div>
-          </div>
+        <article class="pcard wide">
           <div class="pbody">
             <div class="ptag">In progress</div>
             <h3>Main Quest</h3>
             <div class="pstory">
-              <div class="pstory-row fix">
-                <span class="pstory-label">The problem</span>
-                <p>Daily side quests — email, admin, errands, meetings — keep crowding out what I actually meant to be doing.</p>
-              </div>
-              <div class="pstory-row">
-                <span class="pstory-label">What I'm building</span>
-                <p>A game-like life system that helps me remember my main quest when the small stuff takes over.</p>
+              <p class="pstory-problem">Daily side quests — email, admin, errands, meetings — keep crowding out what I actually meant to be doing.</p>
+              <div class="pstory-now">
+                <span class="label">What I'm building</span>
+                <p>A game-like system for life: my "main quests" are my real goals — job hunting means sending out CVs and getting through interviews, German means building vocabulary, and so on. Every milestone I clear in real life shows up as progress toward "beating the game." The point is to keep reminding myself what my main quest actually is right now — I'm still designing what else belongs in it.</p>
               </div>
             </div>
             <div class="pchips"><span>Life system</span><span>Game mechanics</span></div>
             <div class="plinks">
-              <span class="soon">Live demo — coming soon</span>
-              <a class="code" href="#" onclick="alert('Add your GitHub repo link here.');return false;">Code / README ↗</a>
+              <span class="soon">Coming soon</span>
             </div>
           </div>
         </article>
@@ -309,7 +284,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
           <div class="pbody" style="padding:26px 28px">
             <div class="ptag">My approach</div>
             <h3 style="font-size:24px">Small friction → working prototype.</h3>
-            <p>I build when a workflow feels unnecessarily heavy, when an idea keeps coming back, or when I want a tool that doesn't quite exist in the form I need. AI makes experimentation cheap enough to be part of everyday life — not a separate "coding project," just how I solve things now.</p>
+            <p style="display:block;margin-top:10px;font-size:14px;color:var(--ink-soft);line-height:1.6">I build when a workflow feels unnecessarily heavy, when an idea keeps coming back, or when I want a tool that doesn't quite exist in the form I need. AI makes experimentation cheap enough to be part of everyday life — not a separate "coding project," just how I solve things now.</p>
           </div>
         </article>
 
@@ -327,7 +302,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
         <span class="acc-emoji">🧵</span>
         <div><h2>Craft</h2></div>
       </div>
-      <span class="acc-chevron">▸</span>
+      <span class="chev">▸</span>
     </summary>
     <div class="acc-body"><p class="acc-note">Content coming soon.</p></div>
   </details>
@@ -338,7 +313,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
         <span class="acc-emoji">🎨</span>
         <div><h2>Paint</h2></div>
       </div>
-      <span class="acc-chevron">▸</span>
+      <span class="chev">▸</span>
     </summary>
     <div class="acc-body"><p class="acc-note">Content coming soon.</p></div>
   </details>
@@ -349,7 +324,7 @@ footer.site{margin-top:10px;padding:26px 0;border-top:1px solid var(--line);disp
         <span class="acc-emoji">📷</span>
         <div><h2>Image</h2></div>
       </div>
-      <span class="acc-chevron">▸</span>
+      <span class="chev">▸</span>
     </summary>
     <div class="acc-body"><p class="acc-note">Content coming soon.</p></div>
   </details>
